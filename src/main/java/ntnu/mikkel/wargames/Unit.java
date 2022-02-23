@@ -10,6 +10,7 @@ public abstract class Unit {
     private int health;
     private int armor;
     private int attack;
+    private int testField;
 
     protected Unit(String name, int health, int armor, int attack){
         this.name = name;
