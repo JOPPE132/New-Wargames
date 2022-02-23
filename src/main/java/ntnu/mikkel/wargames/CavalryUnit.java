@@ -2,6 +2,8 @@ package ntnu.mikkel.wargames;
 
 public class CavalryUnit extends Unit {
 
+    private int attackCounter;
+
     public CavalryUnit(String name, int health, int attack, int armor){
         super(name, health, attack, armor);
     }
