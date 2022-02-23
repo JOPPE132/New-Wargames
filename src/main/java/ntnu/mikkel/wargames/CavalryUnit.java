@@ -1,4 +1,6 @@
- public class CavalryUnit extends Unit {
+package ntnu.mikkel.wargames;
+
+public class CavalryUnit extends Unit {
 
     public CavalryUnit(String name, int health, int attack, int armor){
         super(name, health, attack, armor);
@@ -11,7 +13,7 @@
     public int getAttackBonus(){
         return 2;
     }
-    
+
     public int getResistBonus(){
         return 1;
     }

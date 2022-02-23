@@ -1,3 +1,5 @@
+package ntnu.mikkel.wargames;
+
 public class RangedUnit extends Unit {
 
     public RangedUnit(String name, int health, int attack, int armor){

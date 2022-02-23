@@ -1,4 +1,4 @@
- 
+package ntnu.mikkel.wargames;
 
 /**
  * Superclass represents a Unit in a heritage hierarchy.
@@ -17,7 +17,6 @@ public abstract class Unit {
         this.armor = armor;
         this.attack = attack;
     }
-
     abstract int getResistBonus();
     abstract int getAttackBonus();
 
@@ -30,11 +29,6 @@ public abstract class Unit {
         if(opponent instanceof RangedUnit){
             opponent.setHealth(10);
         }
-        
-        
-        
-        
-        
         
         if(opponent instanceof CavalryUnit){
             opponent.setHealth(20);
@@ -78,11 +72,27 @@ public abstract class Unit {
     public int getAttack(){
         return attack;
     }
-    
+
+    /**
+     * Method sets a new health for a unit.
+     *
+     * @param newHealth the new amount of health of a unit.
+     */
     public void setHealth(int newHealth){
-        this.health = newHealth;
+
+        try {
+
+
+            if (newHealth == n) {
+                newHealth //EXCEPTIONHANDLING
+            } else {
+                this.health = newHealth;
+            }
+        }
     }
-    
+
+
+
     public String toString() {
         return "Unit{" +
         "name='" + name + '\'' +
@@ -91,14 +101,12 @@ public abstract class Unit {
         ", attack=" + attack +
         '}';
     }
-    
+
+    /**
+     * Prints details of a unit.
+     */
     public void show(){
         System.out.println("Name of artillery: " + name);
         System.out.println("Health: " + health);
-        
-        
-        
-        
-        
     }
 }

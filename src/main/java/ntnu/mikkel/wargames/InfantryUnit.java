@@ -1,3 +1,5 @@
+package ntnu.mikkel.wargames;
+
 public class InfantryUnit extends Unit {
     
     public InfantryUnit(String name, int health, int attack, int armor){
@@ -9,7 +11,7 @@ public class InfantryUnit extends Unit {
     }
     
     public void firstAttack(){
-        int index = 2;
+
         
     }
     

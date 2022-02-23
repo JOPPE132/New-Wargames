@@ -1,3 +1,5 @@
+package ntnu.mikkel.wargames;
+
 public class CommanderUnit extends CavalryUnit{
 
     public CommanderUnit(String name, int health, int attack, int armor){
