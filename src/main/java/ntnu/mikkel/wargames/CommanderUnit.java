@@ -14,7 +14,7 @@ public class CommanderUnit extends CavalryUnit{
         return 2;
     }
     
-    public int getResistBonus(){
+    public int getResistBonus() {
         return 1;
     }
 }
