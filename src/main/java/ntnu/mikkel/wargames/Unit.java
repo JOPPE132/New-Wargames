@@ -41,8 +41,12 @@ public abstract class Unit {
      */
     public void attack(Unit opponent){
         if(opponent.isAlive()){
-            opponent.reduceHealth(getAttack() + getAttackBonus());
+            opponent.reduceHealth();
         }
+    }
+
+    public boolean isDead(){
+        return getHealth() >=0 ;
     }
 
     /**
@@ -56,11 +60,9 @@ public abstract class Unit {
 
     /**
      * Method reduces health of opponent.
-     *
-     * @param damage the damage the unit does.
      */
-    public void reduceHealth(int damage){
-        int newHealth = getHealth() - damage + (getArmor() + getResistBonus()); //Attack+Attackbonus + getARmor + getReistbonus må være positiv
+    public void reduceHealth(){
+        int newHealth = getHealth() - (attack+getAttackBonus()) + (getArmor() + getResistBonus());
         if(health > newHealth){
             health = newHealth;
         }
