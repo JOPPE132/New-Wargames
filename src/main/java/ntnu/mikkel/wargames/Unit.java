@@ -45,7 +45,7 @@ public abstract class Unit {
         }
     }
 
-    private boolean isDead(){
+    private boolean isAlive(){
         return getHealth() >=0 ;
     }
 
@@ -54,7 +54,7 @@ public abstract class Unit {
      *
      * @return true if health is above or equal to 1. False if other.
      */
-    private boolean isAlive(){
+    private boolean isDead(){
         return getHealth() <= 1;
     }
 
@@ -132,8 +132,6 @@ public abstract class Unit {
         System.out.println("Health: " + getHealth());
     }
 
-
-    private void validInput(){ //Kan brukes i setHealth om gyldig parameter.
 
     }
 }

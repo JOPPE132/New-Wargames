@@ -6,6 +6,7 @@ import java.util.Random;
 
 public class Army {
 
+      private boolean hasUnits;
       private final String name;
       private final List<Unit> units;
 
@@ -49,7 +50,7 @@ public class Army {
        */
 
       public boolean hasUnits(){
-        return units.isEmpty();
+        return hasUnits = units.size() > 0;
       }
 
       public void getAllUnits(){ //Med lambdautrykk
