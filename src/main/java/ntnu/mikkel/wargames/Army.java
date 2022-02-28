@@ -6,13 +6,12 @@ import java.util.Random;
 
 public class Army {
 
-      private Unit unit;
-      private String name;
-      private List<Unit> units;
+      private final String name;
+      private final List<Unit> units;
 
       public Army(String name){
         this.name = name;
-        units = new ArrayList<Unit>();
+        units = new ArrayList<>();
       }
 
   /**
@@ -35,7 +34,6 @@ public class Army {
 
 
 
-
       public void addAll(){
       }
     
@@ -53,27 +51,36 @@ public class Army {
       public boolean hasUnits(){
         return units.isEmpty();
       }
-    
-      /**
-       * Prints all units in a certain army. 
-       */
-      public void getAllUnits() { // ????
-        
-          for(Unit unit : units){
-              unit.show();
-              System.out.println();
-          }
-      }
-      
 
-      public int getRandom() {
+      public void getAllUnits(){ //Med lambdautrykk
+        this.units.forEach(
+          u -> System.out.println(u)); //Kan bruke toString i sout(..).
+      }
+
+      public Unit getRandomunit() {
         Random random = new Random();
-        int randomizer = random.nextInt();
+        Unit randomUnit;
 
-        if (randomizer <= units.size()) {
-          return randomizer;
-        }
+        randomUnit = units.get(random.nextInt(units.size()));
+
+        return randomUnit;
       }
+
+
+      public void fillArmy(){
+        CavalryUnit cav = new CavalryUnit("Jon", 50);
+        units.add(cav);
+
+        InfantryUnit inf = new InfantryUnit("Per", 50);
+        units.add(inf);
+
+        RangedUnit ran = new RangedUnit("Dog", 100);
+        units.add(ran);
+      }
+
+
+
+
 
 
 }

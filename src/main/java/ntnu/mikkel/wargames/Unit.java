@@ -16,11 +16,11 @@ public abstract class Unit {
 
     protected Unit(String name, int health, int armor, int attack){
 
-        if(name == null && name == ""){
+        if(name = null && name = ""){
             name = "Unit";
         }
 
-        if(health <= 0 || MAX_HEALTH){
+        if(health >= MAX_HEALTH && health <= 0){
             health = 50;
         }
 
@@ -45,7 +45,7 @@ public abstract class Unit {
         }
     }
 
-    public boolean isDead(){
+    private boolean isDead(){
         return getHealth() >=0 ;
     }
 
@@ -54,7 +54,7 @@ public abstract class Unit {
      *
      * @return true if health is above or equal to 1. False if other.
      */
-    public boolean isAlive(){
+    private boolean isAlive(){
         return getHealth() <= 1;
     }
 
@@ -128,7 +128,12 @@ public abstract class Unit {
      * Prints details of a unit.
      */
     public void show(){
-        System.out.println("Name of artillery: " + name);
-        System.out.println("Health: " + health);
+        System.out.println("Name of artillery: " + getName());
+        System.out.println("Health: " + getHealth());
+    }
+
+
+    private void validInput(){ //Kan brukes i setHealth om gyldig parameter.
+
     }
 }
