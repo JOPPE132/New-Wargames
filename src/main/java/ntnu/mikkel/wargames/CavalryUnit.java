@@ -4,7 +4,7 @@ public class CavalryUnit extends Unit {
 
     private int attackCounter;
 
-    public CavalryUnit(String name, int health, int attack, int armor){
+    protected CavalryUnit(String name, int health, int attack, int armor){
         super(name, health, attack, armor);
     }
 

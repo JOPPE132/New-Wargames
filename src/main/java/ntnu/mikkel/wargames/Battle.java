@@ -1,28 +1,59 @@
-
 package ntnu.mikkel.wargames;
+import java.util.Random;
+
 
 public class Battle {
 
-     private Unit unit;
-     private Army army;
      private Army orcs;
      private Army humans;
      
      public Battle(Army orcs, Army humans){
 
-          orcs = new Army("Nadagogs");
-          humans = new Army("Footmen");
-          army.fillArmy();
+          orcs = new Army("Orcs");
+          humans = new Army("Humans");
+
+          CavalryUnit cavalryUnit = new CavalryUnit("Knight", 100);
+          CommanderUnit commanderUnit = new CommanderUnit("Mountain King", 200);
+          InfantryUnit infantryUnit = new InfantryUnit("Footman", 100);
+          RangedUnit rangedUnit = new RangedUnit("Archer", 100);
+
+          for(int i = 0; i < 50; i++){
+               orcs.addUnit(cavalryUnit);
+          }
+
+          //TODO ADD UNITS TO ARMIES
+
+
+
+
 
      }
 
      public void simulate(){
+          Random random = new Random();
 
-          while(army.hasUnits()){
+          while (orcs.hasUnits() && humans.hasUnits()){
 
-               unit.attack();
+               if(random.nextBoolean()){
+                    orcs.getRandomunit();
+
+                    orcs.
+
+
+
+
+
+                    }
+               else{
+                    humans.getRandomunit();
+
+
+
 
 
                }
+
+
           }
      }
+}

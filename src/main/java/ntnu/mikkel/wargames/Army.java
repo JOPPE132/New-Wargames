@@ -68,18 +68,6 @@ public class Army {
       }
 
 
-      public void fillArmy(){
-        CavalryUnit cav = new CavalryUnit("Jon", 50);
-        units.add(cav);
-
-        InfantryUnit inf = new InfantryUnit("Per", 50);
-        units.add(inf);
-
-        RangedUnit ran = new RangedUnit("Dog", 100);
-        units.add(ran);
-      }
-
-
 
 
 
