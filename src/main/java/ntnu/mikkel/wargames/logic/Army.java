@@ -1,22 +1,25 @@
-package ntnu.mikkel.wargames;
+package ntnu.mikkel.wargames.logic;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
+import ntnu.mikkel.wargames.data.Unit;
 
+/**
+ * Army is an collection of Units who can attack other units in a battle.
+ */
 public class Army {
 
-      private boolean hasUnits;
       private final String name;
-      private final List<Unit> units;
+      private final List<Unit> army;
 
       public Army(String name){
         this.name = name;
-        units = new ArrayList<>();
+        army = new ArrayList<>();
       }
 
   /**
-   * Method returns the name of a certain army.
+   * Method returns the name of an army.
    *
    * @return the name of a certain army.
    */
@@ -24,22 +27,22 @@ public class Army {
         return name;
       }
 
-  /**
-   * Method adds
-   *
-   * @param unit
-   */
-  public void addUnit(Unit unit){
-        units.add(unit);
+    /**
+     * Method adds a unit to an Army.
+     *
+     * @param unit
+     */
+      public void addUnit(Unit unit){
+        army.add(unit);
       }
 
 
 
-      public void addAll(){
+      public void addAll(ArrayList<Unit> allUnits){
       }
     
       public void removeUnit(Unit unit){
-        units.remove(unit);
+        army.remove(unit);
       }
     
       /**
@@ -50,28 +53,21 @@ public class Army {
        */
 
       public boolean hasUnits(){
-        return hasUnits = units.size() > 0;
+        return army.size() > 0;
       }
 
       public void getAllUnits(){ //Med lambdautrykk
-        this.units.forEach(
-          u -> System.out.println(u)); //Kan bruke toString i sout(..).
+        this.army.forEach((Unit u)-> {
+          System.out.println(u.toString());
+        });
       }
 
       public Unit getRandomunit() {
         Random random = new Random();
         Unit randomUnit;
-
-        randomUnit = units.get(random.nextInt(units.size()));
-
+        randomUnit = army.get(random.nextInt(army.size()));
         return randomUnit;
       }
-
-
-
-
-
-
 }
 
 

@@ -1,11 +1,8 @@
-package ntnu.mikkel.wargames;
+package ntnu.mikkel.wargames.data;
 
 /**
  * Superclass represents a Unit in a heritage hierarchy.
  */
-
-
-
 public abstract class Unit {
 
     private static final int MAX_HEALTH = 100;
@@ -16,14 +13,13 @@ public abstract class Unit {
 
     protected Unit(String name, int health, int armor, int attack){
 
-        if(name = null && name = ""){
+        if(name.equals(null) && name.equals("")){
             name = "Unit";
         }
 
         if(health >= MAX_HEALTH && health <= 0){
             health = 50;
         }
-
 
         this.name = name;
         this.health = health;
@@ -45,7 +41,7 @@ public abstract class Unit {
         }
     }
 
-    private boolean isAlive(){
+    public boolean isAlive(){
         return getHealth() >=0 ;
     }
 
@@ -54,14 +50,14 @@ public abstract class Unit {
      *
      * @return true if health is above or equal to 1. False if other.
      */
-    private boolean isDead(){
+    public boolean isDead(){
         return getHealth() <= 1;
     }
 
     /**
      * Method reduces health of opponent.
      */
-    public void reduceHealth(){
+    private void reduceHealth(){
         int newHealth = getHealth() - (attack+getAttackBonus()) + (getArmor() + getResistBonus());
         if(health > newHealth){
             health = newHealth;
@@ -130,8 +126,5 @@ public abstract class Unit {
     public void show(){
         System.out.println("Name of artillery: " + getName());
         System.out.println("Health: " + getHealth());
-    }
-
-
     }
 }
