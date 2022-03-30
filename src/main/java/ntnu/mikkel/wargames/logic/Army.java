@@ -1,6 +1,7 @@
 package ntnu.mikkel.wargames.logic;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Random;
 import ntnu.mikkel.wargames.data.Unit;
@@ -10,20 +11,36 @@ import ntnu.mikkel.wargames.data.Unit;
  */
 public class Army {
 
-      private final String name;
-      private final List<Unit> army;
+    private String name;
+    private final List<Unit> army;
 
-      public Army(String name){
+  /**
+   * Constructor creates an object of Army.
+   *
+   * @param name the name of the Army.
+   */
+  public Army(String name){
+      if(name == null || name.equals("")){
+        name = "SomeArmy";
+      }
         this.name = name;
         army = new ArrayList<>();
       }
 
-  /**
-   * Method returns the name of an army.
-   *
-   * @return the name of a certain army.
-   */
-  public String getName(){
+    public Army(String name, List<Unit> units){
+      if(name == null || name.equals("")){
+        name = "SomeArmy";
+      }
+      this.name = name;
+      this.army = units;
+    }
+
+    /**
+     * Method returns the name of an army.
+     *
+     * @return the name of an army.
+     */
+    public String getName(){
         return name;
       }
 
@@ -36,27 +53,46 @@ public class Army {
         army.add(unit);
       }
 
+    /**
+    * Method adds all units from a list to the Army list.
+    *
+    * @param listUnits variable of the list you wish to add to Army.
+    */
+    public void addAll(List<Unit> listUnits){
+      int index = 0;
 
+      Iterator<Unit> it = listUnits.iterator();
 
-      public void addAll(ArrayList<Unit> allUnits){
+      while(it.hasNext()){
+
+      if(index >= 0 && index < army.size()){
+        Unit units = it.next();
+        army.add(units);
       }
-    
-      public void removeUnit(Unit unit){
+      index++;
+    }
+    }
+
+    /**
+    * Method removes an unit from the Army.
+    *
+    * @param unit the unit you wish to remove.
+    */
+    public void removeUnit(Unit unit){
         army.remove(unit);
       }
     
       /**
-       * Checks if there is units in a Army.
+       * Checks if there are units in an Army.
        *
        * @return false if list is empty.
        * @return true if list is populated.
        */
-
       public boolean hasUnits(){
-        return army.size() > 0;
+        return !army.isEmpty();
       }
 
-      public void getAllUnits(){ //Med lambdautrykk
+      public void getAllUnits(){
         this.army.forEach((Unit u)-> {
           System.out.println(u.toString());
         });
@@ -68,6 +104,19 @@ public class Army {
         randomUnit = army.get(random.nextInt(army.size()));
         return randomUnit;
       }
+
+  /**
+   *
+   *
+   * @return
+   */
+  @Override
+      public String toString() {
+        return "Army{" +
+            "name='" + name + '\'' +
+            ", army=" + army +
+            '}';
+  }
 }
 
 

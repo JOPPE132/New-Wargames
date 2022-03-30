@@ -10,16 +10,26 @@ class CavalryUnitTest {
 
   @Test
   void testConstructor() {
-    CavalryUnit cavalryUnit = new CavalryUnit("Name", 1, 1, 1);
+    CavalryUnit cavalryUnit = new CavalryUnit("Name", 50, 10, 15);
 
-    assertEquals(1, cavalryUnit.getArmor());
-    assertTrue(cavalryUnit.isDead());
     assertEquals("Name", cavalryUnit.getName());
-    assertEquals(1, cavalryUnit.getAttack());
+    assertEquals(15, cavalryUnit.getArmor());
+    assertEquals(10, cavalryUnit.getAttack());
+    assertEquals(50, cavalryUnit.getHealth());
   }
 
   @Test
-  void testConstructor2() {
+  void testConstructorAgain(){
+    CavalryUnit cavalryUnit = new CavalryUnit("", 5000, 5000, 5000);
+
+    assertEquals("Unit", cavalryUnit.getName());
+    assertEquals(50, cavalryUnit.getHealth());
+    assertEquals(10, cavalryUnit.getAttack());
+    assertEquals(20, cavalryUnit.getArmor());
+  }
+
+  @Test
+  void testConstructorWithFewerParameters() {
     CavalryUnit cavalryUnit = new CavalryUnit("Name", 100, 1, 1);
 
     assertEquals(1, cavalryUnit.getArmor());

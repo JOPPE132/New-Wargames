@@ -6,25 +6,43 @@ package ntnu.mikkel.wargames.data;
 public abstract class Unit {
 
     private static final int MAX_HEALTH = 100;
+    private static final int MAX_ARMOR = 100;
+    private static final int MAX_ATTACK = 100;
     private String name;
     private int health;
     private int armor;
     private int attack;
 
-    protected Unit(String name, int health, int armor, int attack){
-
-        if(name.equals(null) && name.equals("")){
-            name = "Unit";
+    /**
+     * Constructor creates an object of Unit.
+     *
+     * @param name the name of the unit.
+     * @param health the health of the unit.
+     * @param armor the armor of the unit.
+     * @param attack the attack damage of the unit.
+     */
+    protected Unit(String name, int health, int armor, int attack) {
+        try {
+            if (name == null || name.equals("")) {
+                name = "Unit";
+            }
+            if (health < 0 || health > MAX_HEALTH) {
+                health = 50;
+            }
+            if (armor < 0 || armor > MAX_ARMOR) {
+                armor = 20;
+            }
+            if (attack < 0 || attack > MAX_ATTACK) {
+                attack = 10;
+            }
+            this.name = name;
+            this.health = health;
+            this.armor = armor;
+            this.attack = attack;
         }
-
-        if(health >= MAX_HEALTH && health <= 0){
-            health = 50;
+        catch(Exception e){
+            System.out.println("Something went wrong. Please try again.");
         }
-
-        this.name = name;
-        this.health = health;
-        this.armor = armor;
-        this.attack = attack;
     }
 
     abstract int getResistBonus();
@@ -41,14 +59,19 @@ public abstract class Unit {
         }
     }
 
+    /**
+     * Method checks if unit is alive.
+     *
+     * @return true if unit is alive(above 0 health). False otherwise.
+     */
     public boolean isAlive(){
         return getHealth() >=0 ;
     }
 
     /**
-     * Method checks if unit is alive.
+     * Method checks if unit is dead.
      *
-     * @return true if health is above or equal to 1. False if other.
+     * @return true if health is dead(below 0 health). False otherwise.
      */
     public boolean isDead(){
         return getHealth() <= 1;
@@ -106,25 +129,21 @@ public abstract class Unit {
      * @param newHealth sets the new amount of health of a unit.
      */
     public void setHealth(int newHealth){
-            if (newHealth > 0 && newHealth < 100) {
+            if (newHealth > 0 && newHealth < MAX_HEALTH) {
                 this.health = newHealth;
             }
-        }
-
-    public String toString() {
-        return "Unit{" +
-        "name='" + name + '\'' +
-        ", health=" + health +
-        ", armor=" + armor +
-        ", attack=" + attack +
-        '}';
     }
 
     /**
-     * Prints details of a unit.
+     * Method prints details of a unit.
+     *
+     * @return the details of a unit.
      */
-    public void show(){
-        System.out.println("Name of artillery: " + getName());
-        System.out.println("Health: " + getHealth());
+    public String toString() {
+        return "Unit: " +
+        "name: " + name +
+        ", health: " + health +
+        ", armor: " + armor +
+        ", attack: " + attack;
     }
 }
