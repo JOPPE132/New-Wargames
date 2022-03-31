@@ -35,7 +35,7 @@ public class Army {
       this.army = units;
     }
 
-    /**
+  /**
      * Method returns the name of an army.
      *
      * @return the name of an army.
@@ -92,13 +92,21 @@ public class Army {
         return !army.isEmpty();
       }
 
-      public void getAllUnits(){
+  /**
+   * Prints details about every unit in an army.
+   */
+  public void getAllUnits(){
         this.army.forEach((Unit u)-> {
           System.out.println(u.toString());
         });
       }
 
-      public Unit getRandomunit() {
+  /**
+   * Method picks a random unit from an army an assigns it to a variable.
+   *
+   * @return a random unit from a army.
+   */
+  public Unit getRandomunit() {
         Random random = new Random();
         Unit randomUnit;
         randomUnit = army.get(random.nextInt(army.size()));
@@ -106,9 +114,9 @@ public class Army {
       }
 
   /**
+   * Prints the details of a unit.
    *
-   *
-   * @return
+   * @return the details of a unit.
    */
   @Override
       public String toString() {
@@ -118,12 +126,3 @@ public class Army {
             '}';
   }
 }
-
-
-
-
-
-
-
-
-

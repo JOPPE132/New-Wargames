@@ -21,27 +21,36 @@ public abstract class Unit {
      * @param armor the armor of the unit.
      * @param attack the attack damage of the unit.
      */
-    protected Unit(String name, int health, int armor, int attack) {
-        try {
-            if (name == null || name.equals("")) {
-                name = "Unit";
-            }
-            if (health < 0 || health > MAX_HEALTH) {
-                health = 50;
-            }
-            if (armor < 0 || armor > MAX_ARMOR) {
-                armor = 20;
-            }
-            if (attack < 0 || attack > MAX_ATTACK) {
-                attack = 10;
-            }
+//    protected Unit(String name, int health, int armor, int attack) throws IllegalArgumentException {
+//        if (name != null && name.equals("")) {
+//            name = "Unit";
+//        }
+//        if (health < 0 || health > MAX_HEALTH) {
+//            health = 50;
+//        }
+//        if (armor < 0 || armor > MAX_ARMOR) {
+//            armor = 20;
+//        }
+//        if (attack < 0 || attack > MAX_ATTACK) {
+//            attack = 10;
+//        } else {
+//            throw new IllegalArgumentException("Something went wrong. Please try again.");
+//        }
+//        this.name = name;
+//        this.health = health;
+//        this.armor = armor;
+//        this.attack = attack;
+//    }
+
+    protected Unit(String name, int health, int armor, int attack) throws  IllegalArgumentException{
+        if(name == null || name.isBlank()){
+            throw new IllegalArgumentException("Something went wrong. Name can not be null or blank");
+        }
+        else{
             this.name = name;
             this.health = health;
             this.armor = armor;
             this.attack = attack;
-        }
-        catch(Exception e){
-            System.out.println("Something went wrong. Please try again.");
         }
     }
 
