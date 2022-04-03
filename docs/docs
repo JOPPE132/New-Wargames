@@ -1,5 +1,14 @@
 ----Dokumentasjon og refleksjon Wargames----
 Start: 28.03.22
 
-29.03.22
+29.03
 Lage tester for alle klassene.
+
+01.04
+Vil lage alle objekter av Unit i Army klassen for å beholde loose coupling og høy cohesion. Denne klassen
+skal bare ha ansvar for en Army, og fylle armien med objekter.
+
+Battle klassen som de når blir laget i, skal ikke ha dette ansvaret, da denne klassen
+bare skal simulere en kamp mellom armeene.
+
+TODO

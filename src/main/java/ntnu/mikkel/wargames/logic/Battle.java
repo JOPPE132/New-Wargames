@@ -3,18 +3,19 @@ package ntnu.mikkel.wargames.logic;
 import java.util.Random;
 import ntnu.mikkel.wargames.data.CavalryUnit;
 import ntnu.mikkel.wargames.data.CommanderUnit;
+import ntnu.mikkel.wargames.data.InfantryUnit;
 import ntnu.mikkel.wargames.data.Unit;
 
 public class Battle {
 
   private static final int ARMY_ONE_WINNER = 1;
   private static final int ARMY_TWO_WINNER = 2;
-  private final Army armyOne;
-  private final Army armyTwo;
+  private Army armyOne;
+  private Army armyTwo;
 
-  public Battle() {
-    this.armyOne = new Army("Orcs");
-    this.armyTwo = new Army("Humans");
+  public Battle(Army orcs, Army humans) {
+    this.armyOne = orcs;
+    this.armyTwo = humans;
     this.fillOrcArmyWithUnits();
     this.fillHumanArmyWithUnits();
   }
@@ -26,6 +27,10 @@ public class Battle {
 
       CommanderUnit commanderUnit = new CommanderUnit("Commander", 100);
       armyOne.addUnit(commanderUnit);
+
+      InfantryUnit infantryUnit = new InfantryUnit("Infantry", 100);
+      armyOne.addUnit(infantryUnit);
+
     }
   }
 
@@ -51,7 +56,7 @@ public class Battle {
    * random class. The random chosen unit from Army 1 attacks a randomly chosen unit
    * from Army 2. If an unit dies from an attack, it is then removed from the army.
    */
-  public void simulate() {
+  private Army simulate() {
     Army winner = null;
     boolean battling = true;
 
@@ -100,8 +105,13 @@ public class Battle {
         }
       }
     }
+    return winner;
   }
 
+  /**
+   * Start method of application.
+   * @param args arguments.
+   */
   public static void main(String[] args) {
     Battle battle = new Battle();
     battle.simulate();

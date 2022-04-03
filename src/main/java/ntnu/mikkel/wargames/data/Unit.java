@@ -13,6 +13,7 @@ public abstract class Unit {
   private final int armor;
   private final int attack;
 
+
   /**
    * Constructor creates an object of Unit.
    *
@@ -43,7 +44,7 @@ public abstract class Unit {
 //    }
   protected Unit(String name, int health, int armor, int attack) throws IllegalArgumentException {
     if (name == null || name.isBlank()) {
-      throw new IllegalArgumentException("Something went wrong. Name can not be null or blank");
+      throw new IllegalArgumentException("Name can not be null or blank. Please try again.");
     } else {
       this.name = name;
       this.health = health;
