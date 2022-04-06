@@ -20,7 +20,7 @@ public class RangedUnit extends Unit {
    * @param name   name of the unit.
    * @param health health of the unit.
    */
-  protected RangedUnit(String name, int health) {
+  public RangedUnit(String name, int health) {
     super(name, health, 8, 15);
   }
 

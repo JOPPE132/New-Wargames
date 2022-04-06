@@ -11,4 +11,29 @@ skal bare ha ansvar for en Army, og fylle armien med objekter.
 Battle klassen som de når blir laget i, skal ikke ha dette ansvaret, da denne klassen
 bare skal simulere en kamp mellom armeene.
 
-TODO
+04.04
+Sliter litt med exceptionhandling.
+Hvor man skal bruke try og catch. Hvordan metodestrukturen skal se ut når den tar
+inn et parameter.
+
+Hadde også to forskjellige konstruktører her. Spurte arne om hvilken type som var best. Den ene var en konstruktør
+som satte verdiene selv dersom inputten fra brukeren ikke var gyldig. Denne løsningen er ikke så bra da vi kan se for
+oss at bruker kjører applikasjonen gjennom et GUI, og verdiene bare blir satt UTEN at brukeren får vite om det. Derfor
+bør vi heller kaste en exception slik at brukeren er klar over feilen og det ikke blir satt verdier uten at
+brukeren er klar over det.
+
+Burde lage en egen klasse som håndterer armeene. I stedet for å skape Unit objektene i Battle eller Army metoden,
+skal vi kunne bare lese inn fra en fil om alle typene av unit. Denne klassen heter nå "ArmyHandler". Her skal vi
+kunne lese og skrive til fil. Dette bevarer høy cohesion(ansvar) og loose coupling(kobling) mellom klassene.
+
+06.04
+Jobber med skriving til/og henting fra fil. Mange muligheter her. Mange klasser man kan ta i bruk
+for å skrive eller lese fra fil. Velger scanner her foreløpig fordi den er jeg kjent med. Kan metodene
+og hva de returnerer og trenger.
+
+
+
+
+Kiler:
+https://www.geeksforgeeks.org/different-ways-reading-text-file-java/
+

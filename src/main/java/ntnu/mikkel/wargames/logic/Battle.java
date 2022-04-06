@@ -10,8 +10,8 @@ public class Battle {
 
   private static final int ARMY_ONE_WINNER = 1;
   private static final int ARMY_TWO_WINNER = 2;
-  private Army armyOne;
-  private Army armyTwo;
+  private final Army armyOne;
+  private final Army armyTwo;
 
   public Battle(Army orcs, Army humans) {
     this.armyOne = orcs;
@@ -44,6 +44,11 @@ public class Battle {
     }
   }
 
+  /**
+   * Method randomly chooses a number between 0 and 2.
+   *
+   * @return returns a random integer between 0 and 2.
+   */
   private int randomCombatGenerator() {
     Random random = new Random();
     int combat;
@@ -105,15 +110,18 @@ public class Battle {
         }
       }
     }
+    System.out.println(winner);
     return winner;
   }
 
   /**
    * Start method of application.
+   *
    * @param args arguments.
    */
   public static void main(String[] args) {
-    Battle battle = new Battle();
+    Battle battle = new Battle(new Army("Orcs"), new Army("Humans"));
+
     battle.simulate();
   }
 }

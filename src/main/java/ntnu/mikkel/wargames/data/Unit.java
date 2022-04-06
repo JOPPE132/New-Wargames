@@ -22,35 +22,15 @@ public abstract class Unit {
    * @param armor  the armor of the unit.
    * @param attack the attack damage of the unit.
    */
-//    protected Unit(String name, int health, int armor, int attack) throws IllegalArgumentException {
-//        if (name != null && name.equals("")) {
-//            name = "Unit";
-//        }
-//        if (health < 0 || health > MAX_HEALTH) {
-//            health = 50;
-//        }
-//        if (armor < 0 || armor > MAX_ARMOR) {
-//            armor = 20;
-//        }
-//        if (attack < 0 || attack > MAX_ATTACK) {
-//            attack = 10;
-//        } else {
-//            throw new IllegalArgumentException("Something went wrong. Please try again.");
-//        }
-//        this.name = name;
-//        this.health = health;
-//        this.armor = armor;
-//        this.attack = attack;
-//    }
   protected Unit(String name, int health, int armor, int attack) throws IllegalArgumentException {
-    if (name == null || name.isBlank()) {
-      throw new IllegalArgumentException("Name can not be null or blank. Please try again.");
-    } else {
-      this.name = name;
-      this.health = health;
-      this.armor = armor;
-      this.attack = attack;
+    if (name == null || name.isBlank() && health >= 0 && health < MAX_HEALTH &&
+        armor >= 0 && armor < MAX_ARMOR && attack >= 0 && attack < MAX_ATTACK) {
+      throw new IllegalArgumentException("Something wrong happend. Please try again.");
     }
+    this.name = name;
+    this.health = health;
+    this.armor = armor;
+    this.attack = attack;
   }
 
   abstract int getResistBonus();
@@ -63,6 +43,9 @@ public abstract class Unit {
    * @param opponent the opponent you wish to attack.
    */
   public void attack(Unit opponent) {
+    if (opponent == null) {
+      throw new IllegalArgumentException("Opponent can not be null.");
+    }
     if (opponent.isAlive()) {
       opponent.reduceHealth();
     }
@@ -90,11 +73,16 @@ public abstract class Unit {
    * Method reduces health of opponent.
    */
   private void reduceHealth() {
-    int newHealth = getHealth() - (attack + getAttackBonus()) + (getArmor() + getResistBonus());
-    if (health > newHealth) {
-      health = newHealth;
+    try {
+      int newHealth = getHealth() - (attack + getAttackBonus()) + (getArmor() + getResistBonus());
+      if (health > newHealth) {
+        health = newHealth;
+      }
+    } catch (Exception e) {
+      System.out.println("New health can not increase.");
     }
   }
+
 
   /**
    * Method returns the name of a certain unit.
@@ -138,7 +126,7 @@ public abstract class Unit {
    * @param newHealth sets the new amount of health of a unit.
    */
   public void setHealth(int newHealth) {
-    if (newHealth > 0 && newHealth < MAX_HEALTH) {
+    if (newHealth >= 0 && newHealth < MAX_HEALTH) {
       this.health = newHealth;
     }
   }

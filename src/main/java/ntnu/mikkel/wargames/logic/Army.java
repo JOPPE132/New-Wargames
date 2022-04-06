@@ -5,8 +5,6 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Random;
 import java.util.stream.Collectors;
-import ntnu.mikkel.wargames.data.CavalryUnit;
-import ntnu.mikkel.wargames.data.InfantryUnit;
 import ntnu.mikkel.wargames.data.Unit;
 
 /**
@@ -18,6 +16,9 @@ public class Army {
   private final ArrayList<Unit> units;
 
   public Army(String name) {
+    if (name == null) {
+      throw new IllegalArgumentException("Name can not be null.");
+    }
     this.name = name;
     units = new ArrayList<>();
   }
@@ -37,7 +38,11 @@ public class Army {
    * @param unit name of the unit you wish to add to an army.
    */
   public void addUnit(Unit unit) {
-    units.add(unit);
+    if (unit == null) {
+      throw new IllegalArgumentException("Unit can not be null");
+    } else {
+      units.add(unit);
+    }
   }
 
   /**
@@ -46,6 +51,9 @@ public class Army {
    * @param listUnits the name of the collection you wish to add to an army.
    */
   public void addAll(List<Unit> listUnits) {
+    if (listUnits.isEmpty()) {
+      System.out.println("There is nothing to be added.");
+    }
     int index = 0;
 
     Iterator<Unit> it = listUnits.iterator();
@@ -53,23 +61,21 @@ public class Army {
     while (it.hasNext()) {
 
       if (index >= 0 && index < listUnits.size()) {
-        Unit units = it.next();
-        this.units.add(units);
+        Unit unit = it.next();
+        this.units.add(unit);
       }
       index++;
     }
   }
 
+  /**
+   * Method removes a unit from an army.
+   *
+   * @param unit the unit you wish to remove.
+   */
   public void removeUnit(Unit unit) {
     units.remove(unit);
   }
-
-  /**
-   * Checks if there is units in a Army.
-   *
-   * @return false if list is empty.
-   * @return true if list is populated.
-   */
 
   /**
    * Checks if a army has units.
@@ -84,6 +90,9 @@ public class Army {
    * Prints out details about every unit in an Army.
    */
   public void getAllUnits() {
+    if (units.isEmpty()) {
+      System.out.println("The army is currently empty.");
+    }
     this.units.forEach((Unit u) -> {
       System.out.println(u.toString());
     });
@@ -106,22 +115,39 @@ public class Army {
    *
    * @return returns a list of units containing only InfantryUnits.
    */
-  public List<Unit> getInfantryUnits(){ //Løsning funker, men ikke optimal. Hva om infantryunit har annet navn et "Infantry"?
-  List<Unit> allUnits = new ArrayList();
-  allUnits = this.units.stream().
-        filter(infantryUnit -> infantryUnit.getName().equals("Infantry")).collect(Collectors.toList());
+  public List<Unit> getInfantryUnits() { //Løsning funker, men ikke optimal. Hva om infantryunit har annet navn et "Infantry"?
+    List<Unit> infantryUnits = new ArrayList();
+    infantryUnits = this.units.stream().
+        filter(infantryUnit -> infantryUnit.getName().equals("Infantry"))
+        .collect(Collectors.toList());
 
-  return allUnits;
+    return infantryUnits;
   }
 
-//  public ArrayList<Unit> getRangedUnits(){
-//  }
-//
-//  public ArrayList<Unit> getCavalryUnits(){
-//  }
-//
-//  public ArrayList<Unit> getCommanderUnits(){
-//  }
+  public List<Unit> getRangedUnits() {
+    List<Unit> rangedUnits = new ArrayList();
+    rangedUnits = this.units.stream().filter(rangedUnit -> rangedUnit.getName().equals("Ranged"))
+        .collect(Collectors.toList());
+
+    return rangedUnits;
+  }
+
+  public List<Unit> getCavalryUnits() {
+    List<Unit> cavalryUnits = new ArrayList();
+    cavalryUnits = this.units.stream().filter(rangedUnit -> rangedUnit.getName().equals("Cavalry"))
+        .collect(Collectors.toList());
+
+    return cavalryUnits;
+  }
+
+  public List<Unit> getCommanderUnits() {
+    List<Unit> commanderUnits = new ArrayList();
+    commanderUnits =
+        this.units.stream().filter(commanderUnit -> commanderUnit.getName().equals("Commander"))
+            .collect(Collectors.toList());
+
+    return commanderUnits;
+  }
 }
 
 
