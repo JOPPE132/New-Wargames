@@ -1,4 +1,4 @@
 package ntnu.mikkel.wargames.gui;
 
-public class MyApplication {
+public class HelpController {
 }

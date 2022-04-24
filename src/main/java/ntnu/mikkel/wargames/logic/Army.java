@@ -1,5 +1,6 @@
 package ntnu.mikkel.wargames.logic;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -14,12 +15,18 @@ public class Army {
 
   private final String name;
   private final ArrayList<Unit> units;
+  private final ArmyHandler armyHandler;
 
-  public Army(String name) {
-    if (name == null) {
+  public void fillHumanArmy() {
+    ArmyHandler.writeToFile();
+  }
+
+  public Army(String name) throws IOException {
+    if (name == null || name.isBlank()) {
       throw new IllegalArgumentException("Name can not be null.");
     }
     this.name = name;
+    armyHandler = new ArmyHandler();
     units = new ArrayList<>();
   }
 
@@ -83,7 +90,7 @@ public class Army {
    * @return true if list contains no elements. false if otherwise.
    */
   public boolean hasUnits() {
-    return units.isEmpty();
+    return units.size() > 0;
   }
 
   /**

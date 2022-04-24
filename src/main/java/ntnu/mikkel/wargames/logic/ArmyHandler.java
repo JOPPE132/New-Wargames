@@ -19,17 +19,11 @@ import ntnu.mikkel.wargames.data.Unit;
  */
 public class ArmyHandler {
 
-  private static ArrayList<Unit> units;
+  private ArrayList<Unit> units;
 
   public ArmyHandler() throws IOException {
     units = new ArrayList<>();
-    writeArmyFile(fillOrcArmyWithUnits());
   }
-
-  public static void main(String[] args) throws IOException {
-    ArmyHandler armyHandler = new ArmyHandler();
-  }
-
 
   public static void writeToFile() {
     try {

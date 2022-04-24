@@ -1,5 +1,6 @@
 package ntnu.mikkel.wargames.logic;
 
+import java.io.IOException;
 import java.util.Random;
 import ntnu.mikkel.wargames.data.CavalryUnit;
 import ntnu.mikkel.wargames.data.CommanderUnit;
@@ -10,38 +11,12 @@ public class Battle {
 
   private static final int ARMY_ONE_WINNER = 1;
   private static final int ARMY_TWO_WINNER = 2;
-  private final Army armyOne;
-  private final Army armyTwo;
+  private final Army orcArmy;
+  private final Army humanArmy;
 
-  public Battle(Army orcs, Army humans) {
-    this.armyOne = orcs;
-    this.armyTwo = humans;
-    this.fillOrcArmyWithUnits();
-    this.fillHumanArmyWithUnits();
-  }
-
-  private void fillOrcArmyWithUnits() {
-    for (int i = 0; i < 50; i++) {
-      CavalryUnit cavalryUnit = new CavalryUnit("Cavalry", 100);
-      armyOne.addUnit(cavalryUnit);
-
-      CommanderUnit commanderUnit = new CommanderUnit("Commander", 100);
-      armyOne.addUnit(commanderUnit);
-
-      InfantryUnit infantryUnit = new InfantryUnit("Infantry", 100);
-      armyOne.addUnit(infantryUnit);
-
-    }
-  }
-
-  private void fillHumanArmyWithUnits() {
-    for (int i = 0; i < 20; i++) {
-      CavalryUnit cavalryUnit = new CavalryUnit("Cavalry", 10);
-      armyTwo.addUnit(cavalryUnit);
-
-      CommanderUnit commanderUnit = new CommanderUnit("Commander", 10);
-      armyTwo.addUnit(commanderUnit);
-    }
+  public Battle(Army orcArmy, Army humanArmy) {
+    this.orcArmy = orcArmy;
+    this.humanArmy = humanArmy;
   }
 
   /**
@@ -49,10 +24,10 @@ public class Battle {
    *
    * @return returns a random integer between 0 and 2.
    */
-  private int randomCombatGenerator() {
+  private int firstAttackerNumberGenerator() {
     Random random = new Random();
     int combat;
-    combat = random.nextInt(2);
+    combat = random.nextInt(2); //Including 0, exclude 2.
     return combat;
   }
 
@@ -67,61 +42,64 @@ public class Battle {
 
     while (battling) {
 
-      Unit randomOrcUnit = armyOne.getRandomunit();
-      Unit randomHumanUnit = armyTwo.getRandomunit();
+      Unit randomOrcUnit = orcArmy.getRandomunit();
+      Unit randomHumanUnit = humanArmy.getRandomunit();
 
-      int combatOrder = randomCombatGenerator();
+      int combatOrder = firstAttackerNumberGenerator();
 
-      if (combatOrder == 0) {
-        randomOrcUnit.attack(randomHumanUnit);
-        if (randomHumanUnit.isDead()) {
-          armyTwo.removeUnit(randomHumanUnit);
+      while(orcArmy.hasUnits() && humanArmy.hasUnits()){
+
+        if (combatOrder == 0) {
+          randomOrcUnit.attack(randomHumanUnit);
+          if (randomHumanUnit.isDead()) {
+            humanArmy.removeUnit(randomHumanUnit);
+          }
         }
-      }
 
-      if (combatOrder == 1) {
-        randomHumanUnit.attack(randomOrcUnit);
-        if (randomOrcUnit.isDead()) {
-          armyOne.removeUnit(randomOrcUnit);
+        if (combatOrder == 1) {
+          randomHumanUnit.attack(randomOrcUnit);
+          if (randomOrcUnit.isDead()) {
+            orcArmy.removeUnit(randomOrcUnit);
+          }
         }
       }
 
       int scenario = 0;
 
-      if (armyOne.hasUnits()) {
+      if (orcArmy.hasUnits()) {
         scenario = ARMY_ONE_WINNER; //1, Orcs
       }
 
-      if (armyTwo.hasUnits()) {
+      if (humanArmy.hasUnits()) {
         scenario = ARMY_TWO_WINNER; //2, Humans
       }
 
       switch (scenario) {
-        case ARMY_ONE_WINNER -> {
-          winner = armyOne;
+        case ARMY_ONE_WINNER:
+          winner = orcArmy;
           System.out.println("Winner is Orcs!");
           battling = false;
-        }
+          break;
 
-        case ARMY_TWO_WINNER -> {
-          winner = armyTwo;
+        case ARMY_TWO_WINNER:
+          winner = humanArmy;
           System.out.println("Winner is humans!");
           battling = false;
-        }
+          break;
       }
     }
-    System.out.println(winner);
     return winner;
   }
 
-  /**
-   * Start method of application.
-   *
-   * @param args arguments.
-   */
-  public static void main(String[] args) {
-    Battle battle = new Battle(new Army("Orcs"), new Army("Humans"));
+    /**
+     * Start method of application.
+     *
+     * @param args arguments.
+     */
+    public static void main(String[] args) throws IOException {
+      Battle battle = new Battle(new Army("Jon"), new Army("Per"));
+      battle.simulate();
 
-    battle.simulate();
+    }
+
   }
-}

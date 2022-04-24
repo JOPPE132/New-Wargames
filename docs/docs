@@ -1,6 +1,10 @@
 ----Dokumentasjon og refleksjon Wargames----
 Start: 28.03.22
 
+FORSLAG TIL SÆRPREG::
+CRITIAL STRIKE? 25% sjangse for dobbel skade.
+
+
 29.03
 Lage tester for alle klassene.
 
@@ -32,8 +36,14 @@ for å skrive eller lese fra fil. Velger scanner her foreløpig fordi den er jeg
 og hva de returnerer og trenger.
 
 
+20.04
+Før innføring i hvordan programmere GUI med flere ulike scener. Lager en kontroller for hver scene.
 
 
-Kiler:
+
+
+
+
+Kilder:
 https://www.geeksforgeeks.org/different-ways-reading-text-file-java/
 
