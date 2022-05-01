@@ -30,6 +30,10 @@ public class Army {
     units = new ArrayList<>();
   }
 
+  public ArrayList<Unit> getArrayList(){
+    return units;
+  }
+
   /**
    * Method returns the name of an army.
    *

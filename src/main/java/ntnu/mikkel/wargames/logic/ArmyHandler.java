@@ -2,6 +2,7 @@ package ntnu.mikkel.wargames.logic;
 
 import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -19,10 +20,9 @@ import ntnu.mikkel.wargames.data.Unit;
  */
 public class ArmyHandler {
 
-  private ArrayList<Unit> units;
+  private Army army;
 
-  public ArmyHandler() throws IOException {
-    units = new ArrayList<>();
+  public ArmyHandler(){
   }
 
   public static void writeToFile() {
@@ -39,6 +39,67 @@ public class ArmyHandler {
       System.out.println("File could not be saved.");
     }
   }
+
+  /**
+   * Open file
+   *
+   * Get scanner on file
+   *
+   * Read name of Unit
+   *
+   *
+   *
+   *
+   *
+   * @param filename
+   * @return
+   * @throws FileNotFoundException
+   */
+  public ArrayList<Unit> readArmyFromFile(String filename) throws FileNotFoundException {
+    int count = 0;
+    String line = null;
+    ArrayList<Unit> fileUnits = army.getArrayList();
+                                                                                                            //"C://Programfiler//Hobbyprogrammering/Armies/army1.txt"
+    File file = new File(filename);
+    Scanner scanner = new Scanner(file);
+
+    while(scanner.hasNextLine()){
+
+
+
+    }
+
+
+
+
+
+
+
+
+
+
+
+    //line.split(","); //Splitter mellom komma
+
+    while (scanner.hasNextLine()) {
+
+      if(scanner.hasNextLine()){ //hvis første linje starter med CavalryUnit
+
+        //scanner.s
+
+          //https://www.youtube.com/watch?v=-iVTEzwgJ2s&ab_channel=MITEECSman
+
+
+
+        units.add(new CavalryUnit("Gromp", 100));
+      }
+      if(scanner.hasNextLine()){
+        units.add(new InfantryUnit("Dog", 100));
+      }
+    }
+    return units;
+  }
+
 
   public static void readFromFile() throws IOException {
     try {
@@ -65,19 +126,15 @@ public class ArmyHandler {
     fileWriter.close();
   }
 
-  public static ArrayList<Unit> fillOrcArmyWithUnits() {
 
-    CavalryUnit cavalryUnit = new CavalryUnit("Cavalry", 50);
-    InfantryUnit infantryUnit = new InfantryUnit("Infantry", 50);
-    RangedUnit rangedUnit = new RangedUnit("Ranged", 50);
-    CommanderUnit commanderUnit = new CommanderUnit("Commander", 100);
 
-    for (int i = 0; i < 50; i++) {
-      units.add(cavalryUnit);
-      units.add(infantryUnit);
-      units.add(rangedUnit);
-      units.add(commanderUnit);
-    }
-    return units;
-  }
-}
+
+
+
+
+
+
+
+
+
+

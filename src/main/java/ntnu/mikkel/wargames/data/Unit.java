@@ -9,10 +9,10 @@ public abstract class Unit {
   private static final int MAX_ARMOR = 100;
   private static final int MAX_ATTACK = 100;
   private DamageHandler damageHandler;
-  private final String name;
+  private String name;
   private int health;
-  private final int armor;
-  private final int attack;
+  private int armor;
+  private int attack;
 
 
   /**
@@ -29,10 +29,10 @@ public abstract class Unit {
 
       throw new IllegalArgumentException("Something wrong happend. Please try again.");
     }
-    this.name = name;
-    this.health = health;
-    this.armor = armor;
-    this.attack = attack;
+    this.setName(name);
+    this.setHealth(health);
+    this.setArmor(armor);
+    this.setAttack(attack);
     damageHandler = new DamageHandler();
   }
 
@@ -117,6 +117,18 @@ public abstract class Unit {
     if (newHealth >= 0 && newHealth < MAX_HEALTH) {
       this.health = newHealth;
     }
+  }
+
+  public void setName(String name){
+    this.name = name;
+  }
+
+  public void setArmor(int armor){
+    this.armor = armor;
+  }
+
+  public void setAttack(int attack){
+    this.attack = attack;
   }
 
   /**

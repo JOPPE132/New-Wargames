@@ -11,8 +11,8 @@ public class Battle {
 
   private static final int ARMY_ONE_WINNER = 1;
   private static final int ARMY_TWO_WINNER = 2;
-  private final Army orcArmy;
-  private final Army humanArmy;
+  private Army orcArmy;
+  private Army humanArmy;
 
   public Battle(Army orcArmy, Army humanArmy) {
     this.orcArmy = orcArmy;
@@ -36,31 +36,36 @@ public class Battle {
    * random class. The random chosen unit from Army 1 attacks a randomly chosen unit
    * from Army 2. If an unit dies from an attack, it is then removed from the army.
    */
-  private Army simulate() {
+  public Army simulate() {
     Army winner = null;
     boolean battling = true;
 
     while (battling) {
 
+      int combatOrder = firstAttackerNumberGenerator();
       Unit randomOrcUnit = orcArmy.getRandomunit();
       Unit randomHumanUnit = humanArmy.getRandomunit();
 
-      int combatOrder = firstAttackerNumberGenerator();
 
-      while(orcArmy.hasUnits() && humanArmy.hasUnits()){
-
-        if (combatOrder == 0) {
-          randomOrcUnit.attack(randomHumanUnit);
-          if (randomHumanUnit.isDead()) {
-            humanArmy.removeUnit(randomHumanUnit);
-          }
+      if (combatOrder == 0) {
+        randomOrcUnit.attack(randomHumanUnit);
+        randomHumanUnit.attack(randomOrcUnit);
+        if (randomHumanUnit.isDead()) {
+          humanArmy.removeUnit(randomHumanUnit);
         }
+        if (randomOrcUnit.isDead()) {
+          orcArmy.removeUnit(randomOrcUnit);
+        }
+      }
 
-        if (combatOrder == 1) {
-          randomHumanUnit.attack(randomOrcUnit);
-          if (randomOrcUnit.isDead()) {
-            orcArmy.removeUnit(randomOrcUnit);
-          }
+      if (combatOrder == 1) {
+        randomHumanUnit.attack(randomOrcUnit);
+        randomOrcUnit.attack(randomHumanUnit);
+        if (randomOrcUnit.isDead()) {
+          orcArmy.removeUnit(randomOrcUnit);
+        }
+        if (randomHumanUnit.isDead()) {
+          humanArmy.removeUnit(randomHumanUnit);
         }
       }
 
@@ -91,15 +96,13 @@ public class Battle {
     return winner;
   }
 
-    /**
-     * Start method of application.
-     *
-     * @param args arguments.
-     */
-    public static void main(String[] args) throws IOException {
-      Battle battle = new Battle(new Army("Jon"), new Army("Per"));
-      battle.simulate();
-
-    }
-
+  /**
+   * Start method of application.
+   *
+   * @param args arguments.
+   */
+  public static void main(String[] args) throws IOException {
+    Battle battle = new Battle(new Army("ArmyOne") ,new Army("ArmyTwo"));
+    battle.simulate();
   }
+}
