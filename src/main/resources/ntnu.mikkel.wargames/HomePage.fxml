@@ -6,7 +6,8 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="850.0" prefWidth="1440.0" style="-fx-background-color: #414673;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="850.0" prefWidth="1440.0" style="-fx-background-color: #414673;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ntnu.mikkel.wargames.gui.MenuController">
    <center>
       <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
@@ -15,17 +16,17 @@
                   <Font name="Impact" size="87.0" />
                </font>
             </Text>
-            <MFXButton buttonType="RAISED" layoutX="500.0" layoutY="309.0" prefHeight="77.0" prefWidth="390.0" text="Play">
+            <MFXButton fx:id="QuitButton" buttonType="RAISED" layoutX="500.0" layoutY="309.0" onMouseClicked="#PlayClick" prefHeight="77.0" prefWidth="390.0" text="Play">
                <font>
                   <Font size="37.0" />
                </font>
             </MFXButton>
-            <MFXButton buttonType="RAISED" layoutX="500.0" layoutY="472.0" prefHeight="77.0" prefWidth="390.0" text="How to Play">
+            <MFXButton fx:id="HowToPlayButtonPressd" buttonType="RAISED" layoutX="500.0" layoutY="472.0" onMouseClicked="#howToPlayClick" prefHeight="77.0" prefWidth="390.0" text="How to Play">
                <font>
                   <Font size="37.0" />
                </font>
             </MFXButton>
-            <MFXButton buttonType="RAISED" layoutX="500.0" layoutY="637.0" prefHeight="77.0" prefWidth="390.0" text="Quit">
+            <MFXButton fx:id="QuitButtonPressed" buttonType="RAISED" layoutX="500.0" layoutY="637.0" onMouseClicked="#ExitButtonPressed" prefHeight="77.0" prefWidth="390.0" text="Quit">
                <font>
                   <Font size="37.0" />
                </font>
