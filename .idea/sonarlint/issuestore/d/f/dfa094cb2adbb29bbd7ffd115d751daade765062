@@ -1,0 +1,40 @@
+
+K
+java:S3740Ç"/Provide the parametrized type for this generic.(¸éËù˚ˇˇˇˇ
+E
+java:S3740ã"/Provide the parametrized type for this generic.(´é≤v
+K
+java:S3740ì"/Provide the parametrized type for this generic.(ƒ•ÿ∞˘ˇˇˇˇ
+K
+java:S3740õ"/Provide the parametrized type for this generic.(˜¥ïƒ¸ˇˇˇˇ
+M
+java:S2440"+Remove this instantiation of "ArmyHandler".(ûÈï‰˙ˇˇˇˇ8ı≈‹˙Ö0
+S	java:S106B"9Replace this use of System.out or System.err by a logger.(Ó∏úÓ˝ˇˇˇˇ
+S	java:S106i"9Replace this use of System.out or System.err by a logger.(ºïî¡˚ˇˇˇˇ
+B
+java:S1602k",Remove useless curly braces around statement(ëÿÂÈ
+M	java:S106l"9Replace this use of System.out or System.err by a logger.(î†ÆP
+3
+java:S2119v"Save and re-use this "Random".(º›≈f
+]
+java:S1854Ç"ARemove this useless assignment to local variable "infantryUnits".(¸éËù˚ˇˇˇˇ
+i
+java:S6204Ö"RReplace this usage of 'Stream.collect(Collectors.toList())' with 'Stream.toList()'(™ô®π
+U
+java:S1854ã"?Remove this useless assignment to local variable "rangedUnits".(´é≤v
+i
+java:S6204ç"RReplace this usage of 'Stream.collect(Collectors.toList())' with 'Stream.toList()'(™ô®π
+\
+java:S1854ì"@Remove this useless assignment to local variable "cavalryUnits".(ƒ•ÿ∞˘ˇˇˇˇ
+i
+java:S6204ï"RReplace this usage of 'Stream.collect(Collectors.toList())' with 'Stream.toList()'(™ô®π
+^
+java:S1854õ"BRemove this useless assignment to local variable "commanderUnits".(˜¥ïƒ¸ˇˇˇˇ
+i
+java:S6204û"RReplace this usage of 'Stream.collect(Collectors.toList())' with 'Stream.toList()'(™ô®π
+L
+java:S1068"/Remove this unused "armyHandler" private field.(≥◊ƒü8â∆‹˙Ö0
+ç
+java:S1319!"pThe return type of this method should be an interface such as "List" rather than the implementation "ArrayList".(⁄ÚùÈ8ÏÂãõà0
+T
+java:S1155a">Use isEmpty() to check whether the collection is empty or not.(Ó»∞ä

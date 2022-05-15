@@ -10,16 +10,13 @@ public class MainWindow extends Application {
 
   private Stage primarystage;
   private Scene mainScene;
-  private Scene playScene;
-  private Scene helpScene;
 
   @Override
   public void start(Stage primaryStage) throws Exception{
-    this.primarystage = primaryStage;
 
-    FXMLLoader mainPaneLoader = new FXMLLoader(getClass().getResource("/HomePage.fxml"));
-    Parent mainPane = mainPaneLoader.load();
-    this.mainScene = new Scene(mainPane,1000,770);
+    FXMLLoader homePageLoader = new FXMLLoader(getClass().getResource("/BattlePage.fxml"));
+    Parent mainPane = homePageLoader.load();
+    this.mainScene = new Scene(mainPane,1440,850);
 
 
     primaryStage.setTitle("Wargames");

@@ -24,7 +24,7 @@ public abstract class Unit {
    * @param attack the attack damage of the unit.
    */
   protected Unit(String name, int health, int armor, int attack) throws IllegalArgumentException {
-    if (name == null || name.isBlank() && health >= 0 && health < MAX_HEALTH &&
+    if (name == null || name.isBlank() && health >= 0 && health < MAX_HEALTH && //TODO FIKS
         armor >= 0 && armor < MAX_ARMOR && attack >= 0 && attack < MAX_ATTACK) {
 
       throw new IllegalArgumentException("Something wrong happend. Please try again.");

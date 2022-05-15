@@ -22,8 +22,9 @@ public class ArmyHandler {
 
   private Army army;
 
-  public ArmyHandler(){
+  public ArmyHandler() {
   }
+
 
   public static void writeToFile() {
     try {
@@ -42,14 +43,10 @@ public class ArmyHandler {
 
   /**
    * Open file
-   *
+   * <p>
    * Get scanner on file
-   *
+   * <p>
    * Read name of Unit
-   *
-   *
-   *
-   *
    *
    * @param filename
    * @return
@@ -59,45 +56,36 @@ public class ArmyHandler {
     int count = 0;
     String line = null;
     ArrayList<Unit> fileUnits = army.getArrayList();
-                                                                                                            //"C://Programfiler//Hobbyprogrammering/Armies/army1.txt"
+
+
+    //"C://Programfiler//Hobbyprogrammering/Armies/army1.txt"
     File file = new File(filename);
     Scanner scanner = new Scanner(file);
 
-    while(scanner.hasNextLine()){
-
+    while (scanner.hasNextLine()) {
 
 
     }
-
-
-
-
-
-
-
-
-
 
 
     //line.split(","); //Splitter mellom komma
 
     while (scanner.hasNextLine()) {
 
-      if(scanner.hasNextLine()){ //hvis første linje starter med CavalryUnit
+      if (scanner.hasNextLine()) { //hvis første linje starter med CavalryUnit
 
         //scanner.s
 
-          //https://www.youtube.com/watch?v=-iVTEzwgJ2s&ab_channel=MITEECSman
+        //https://www.youtube.com/watch?v=-iVTEzwgJ2s&ab_channel=MITEECSman
 
 
-
-        units.add(new CavalryUnit("Gromp", 100));
+        //units.add(new CavalryUnit("Gromp", 100));
       }
-      if(scanner.hasNextLine()){
-        units.add(new InfantryUnit("Dog", 100));
+      if (scanner.hasNextLine()) {
+        //units.add(new InfantryUnit("Dog", 100));
       }
     }
-    return units;
+    return null;
   }
 
 
@@ -125,6 +113,7 @@ public class ArmyHandler {
     }
     fileWriter.close();
   }
+}
 
 
 

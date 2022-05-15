@@ -46,7 +46,11 @@ Kan lage et interface med battle, siden man kan ha mange forskjellige battles. 1
 GUI: Lager flere scener.
      Prøver å ikke ta meg vann over hodet.
 
+25.04
+Dokumentasjon på testklasser. Bruke html for strukturering? Junit rammeverk bruker surefire motor for å kjøre tester.
+Negative og positive tester. Lage dummyunit i Testklassen som arver av Unit som kan brukes til testing.
 
+README, AUTHOR, VERSJON
 
 
 Kilder:

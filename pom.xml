@@ -23,11 +23,11 @@
             </plugin>
 
             <!-- Add a newer version of the JUnit test interface surefire, to be compliant with JUnit5 -->
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-surefire-plugin</artifactId>
-                <version>3.0.0-M5</version>
-            </plugin>
+            <!--            <plugin>-->
+            <!--                <groupId>org.apache.maven.plugins</groupId>-->
+            <!--                <artifactId>maven-surefire-plugin</artifactId>-->
+            <!--                <version>3.0.0-M5</version>-->
+            <!--            </plugin>-->
 
 
             <!-- Add the JavaFX plugin allowing you to run/execute JavaFX from Maven -->
@@ -93,15 +93,15 @@
         </dependency>
 
         <dependency>
-            <groupId>org.openjfx</groupId>
-            <artifactId>javafx-controls</artifactId>
-            <version>18</version>
+            <groupId>io.github.palexdev</groupId>
+            <artifactId>materialfx</artifactId>
+            <version>11.13.5</version>
         </dependency>
 
         <dependency>
-            <groupId>org.jfxtras</groupId>
-            <artifactId>jfxtras-all</artifactId>
-            <version>10.0-r1</version>
+            <groupId>org.openjfx</groupId>
+            <artifactId>javafx-controls</artifactId>
+            <version>17.0.2</version>
         </dependency>
 
         <dependency>

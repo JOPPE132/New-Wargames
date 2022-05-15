@@ -6,7 +6,16 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.junit.jupiter.api.Test;
 
-class CavalryUnitTest {
+/**
+ * Test the CavalryUnit class by:
+ * <ul>
+ *   <li>Test creation of object with valid parameters.</li>
+ *   <li>Test creation with invalid <b>name</b>.</li>
+ *
+ *
+ * </ul>
+ */
+public class CavalryUnitTest {
 
   @Test
   void testConstructor() {
