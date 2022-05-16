@@ -26,7 +26,7 @@
                   <Font size="37.0" />
                </font>
             </MFXButton>
-            <MFXButton fx:id="QuitButtonPressed" buttonType="RAISED" layoutX="500.0" layoutY="637.0" onMouseClicked="#ExitButtonPressed" prefHeight="77.0" prefWidth="390.0" text="Quit">
+            <MFXButton fx:id="QuitButtonPressed" buttonType="RAISED" layoutX="500.0" layoutY="637.0" onAction="#ExitButtonPressed" prefHeight="77.0" prefWidth="390.0" text="Quit">
                <font>
                   <Font size="37.0" />
                </font>

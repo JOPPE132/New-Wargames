@@ -27,71 +27,65 @@ public class MainWindow extends Application {
   private HowToPlayController howToPlayController;
   private BattleController battleController;
 
+  //@SuppressWarnings("unchecked")
   @Override
-  public void start(Stage primaryStage) throws Exception{
+  public void start(Stage primaryStage) throws Exception {
     try{
-      //Loader for HomePage.FXML
-      URL homePageURL = getClass().getResource("/HomePage.fxml");
-      FXMLLoader homePageLoader = new FXMLLoader(homePageURL);
-      Parent homePagePane = homePageLoader.load();
-      this.menuScene = new Scene(homePagePane,1440,850);
-
-      //Loader for ArmySetupPage.FXML
-      URL armySetupURL = getClass().getResource("/ArmySetupPage.fxml");
-      FXMLLoader armySetupLoader = new FXMLLoader(armySetupURL);
-      Parent armySetupPane = armySetupLoader.load();
-      this.armySetupScene = new Scene(armySetupPane, 1440, 850);
-
-      //Loader for HowToPlayPage.FXML
-      URL howToPlayURL = getClass().getResource("/HowToPlayPage.fxml");
-      FXMLLoader howToPlayPageLoader = new FXMLLoader(howToPlayURL);
-      Parent howToPlayPagePane = howToPlayPageLoader.load();
-      this.howToPlayScene= new Scene(howToPlayPagePane, 1440, 850);
-
-      //Loader for BattlePage.FXML
-      URL battleURL = getClass().getResource("/BattlePage.fxml");
-      FXMLLoader battleLoader = new FXMLLoader(battleURL);
-      Parent battlePane = battleLoader.load();
-      this.battleScene = new Scene(battlePane, 1440, 850);
+    //Loader for HomePage.FXML
+    FXMLLoader homePageLoader = new FXMLLoader(getClass().getResource("/ntnu.mikkel.wargames/HomePage.fxml"));
+    Parent homePagePane = homePageLoader.load();
+    this.menuScene = new Scene(homePagePane, 1440, 850);
 
 
 
 
-      //Gets the different controllers in MenuController class
-      this.menuController = homePageLoader.getController();
-      this.menuController.setHowToPlayScene(this.howToPlayScene);
-      this.menuController.setArmySetupScene(this.armySetupScene);
+    //Getting loader and a pane for ArmySetup scene.
+    FXMLLoader armySetupLoader = new FXMLLoader(getClass().getResource("/ntnu.mikkel.wargames/ArmySetupPage.fxml"));
+    Parent armySetupPane = armySetupLoader.load();
+    this.armySetupScene = new Scene(armySetupPane, 1440, 850);
+    armySetupController = armySetupLoader.getController();
 
-      //Setting up the MenuController scenes.
-      this.menuController.setArmySetupScene(armySetupScene);
-      this.menuController.setHowToPlayScene(howToPlayScene);
-
-      //Setting up the Army scenes.
-      this.armySetupController.setArmySetupScene(armySetupScene);
-      this.armySetupController.setBattleScene(battleScene);
-
-      //Setting up the how to play scenes.
-      this.howToPlayController.setHomeScene(menuScene);
+    //Loader for HowToPlayPage.FXML
+    FXMLLoader howToPlayPageLoader = new FXMLLoader(getClass().getResource("/ntnu.mikkel.wargames/HowToPlayPage.fxml"));
+    Parent howToPlayPagePane = howToPlayPageLoader.load();
+    this.howToPlayScene = new Scene(howToPlayPagePane, 1440, 850);
+    howToPlayController = howToPlayPageLoader.getController();
 
 
-      //Setting up the Battle scenes.
-      this.battleController.setArmyScene(armySetupScene);
-      this.battleController.sethomeScene(menuScene);
+    //Loader for BattlePage.FXML
+    FXMLLoader battleLoader = new FXMLLoader(getClass().getResource("/ntnu.mikkel.wargames/BattlePage.fxml"));
+    Parent battlePane = battleLoader.load();
+    this.battleScene = new Scene(battlePane, 1440, 850);
+    battleController = battleLoader.getController();
+
+    //Gets the different controllers in MenuController class
+    menuController = homePageLoader.getController();
+    menuController.setHowToPlayScene(this.howToPlayScene);
+    menuController.setArmySetupScene(this.armySetupScene);
 
 
-      primaryStage.setResizable(false);
-      primaryStage.setScene(this.menuScene);
-      primaryStage.show();
+    //Setting up the Army scenes.
+    this.armySetupController.setArmySetupScene(armySetupScene);
+    this.armySetupController.setBattleScene(battleScene);
 
-      primaryStage.setOnCloseRequest(event -> {
-        event.consume();
-        exitApplication(primaryStage);
-      });
-    }
-    catch(Exception e){
-      System.out.println(e.getMessage());
-    }
+    //Setting up the how to play scenes.
+    this.howToPlayController.setHomeScene(menuScene);
+
+    //Setting up the Battle scenes.
+    this.battleController.setArmyScene(armySetupScene);
+    this.battleController.sethomeScene(menuScene);
+
+
+    primaryStage.setResizable(false);
+    primaryStage.setScene(this.menuScene);
+    primaryStage.show();
   }
+    catch(Exception e){
+    System.out.println(e.getMessage());
+  }
+  }
+
+
 
   @FXML
   private void exitApplication(Stage stage){

@@ -57,6 +57,9 @@ Persistance??
 Fasade? :O
 
 
+16.05
+En del problemer med å få bytte scener i GUI. Noen objekter som ikke blir skapt og at FXML loader ikke finner stien til FXML filene.
+Finner løsning på nett.
 
 
 Kilder:

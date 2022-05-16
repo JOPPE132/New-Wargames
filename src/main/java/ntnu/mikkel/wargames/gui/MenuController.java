@@ -2,6 +2,7 @@ package ntnu.mikkel.wargames.gui;
 
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
@@ -15,11 +16,15 @@ public class MenuController implements Initializable {
 
   //Scenes
   private Scene armySetupScene;
-  private Scene howToPlayScene;
+  private Scene newHowToPlayScene;
 
   //Controllers
   private HowToPlayController howToPlayController;
   private ArmySetupController armySetupController;
+
+  @Override
+  public void initialize(URL url, ResourceBundle resourceBundle) {
+  }
 
   public void setScene(Stage primaryStage, Scene newScene) {
     primaryStage.hide();
@@ -28,7 +33,7 @@ public class MenuController implements Initializable {
   }
 
   public void setHowToPlayScene(Scene howToPlayScene) {
-    this.howToPlayScene = howToPlayScene;
+    this.newHowToPlayScene = howToPlayScene;
   }
 
   public void setArmySetupScene(Scene armySetupScene){
@@ -38,7 +43,7 @@ public class MenuController implements Initializable {
   @FXML
   protected void howToPlayClick(MouseEvent mouseEvent){
     Stage primaryStage = (Stage)((Node) mouseEvent.getSource()).getScene().getWindow();
-    this.setScene(primaryStage, this.howToPlayScene);
+    this.setScene(primaryStage, this.newHowToPlayScene);
   }
 
   @FXML
@@ -47,14 +52,8 @@ public class MenuController implements Initializable {
     this.setScene(primaryStage, this.armySetupScene);
   }
 
-
-
-
-
-
-
   @FXML
-  public void ExitButtonPressed(MouseEvent event) {
+  public void ExitButtonPressed(ActionEvent event) {
     System.out.println("dwjdj");
     Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
     alert.setTitle("Exit");
@@ -68,10 +67,5 @@ public class MenuController implements Initializable {
   public void recieveControllers(ArmySetupController armySetupController, HowToPlayController howToPlayController){
     this.armySetupController = armySetupController;
     this.howToPlayController = howToPlayController;
-  }
-
-
-  @Override
-  public void initialize(URL url, ResourceBundle resourceBundle) {
   }
 }
