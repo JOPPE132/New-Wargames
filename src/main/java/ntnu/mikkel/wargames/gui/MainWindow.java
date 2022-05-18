@@ -21,6 +21,7 @@ public class MainWindow extends Application {
   private Scene battleScene;
   private Scene armySetupScene;
   private Scene armyPopupScene;
+  private Scene addUnitScene;
 
   //Controllers
   private MenuController menuController;
@@ -28,6 +29,7 @@ public class MainWindow extends Application {
   private HowToPlayController howToPlayController;
   private BattleController battleController;
   private ArmyPopupController armyPopupController;
+  private AddUnitController addUnitController;
 
   //@SuppressWarnings("unchecked")
   @Override
@@ -64,26 +66,37 @@ public class MainWindow extends Application {
     this.armyPopupScene = new Scene(popupPane, 750,550);
     armyPopupController = popupLoader.getController();
 
+    //Loader for AddUnitsPage.FXML
+    FXMLLoader addUnitsLoader = new FXMLLoader(getClass().getResource("/ntnu.mikkel.wargames/AddUnitsPage.fxml"));
+    Parent addUnitsPane = addUnitsLoader.load();
+    this.addUnitScene = new Scene(addUnitsPane, 750, 550);
+    addUnitController = addUnitsLoader.getController();
+
     //Gets the different controllers in MenuController class
     menuController = homePageLoader.getController();
     menuController.setHowToPlayScene(this.howToPlayScene);
     menuController.setArmySetupScene(this.armySetupScene);
 
-
     //Setting up the Army scenes.
     this.armySetupController.setMenuScene(this.menuScene);
     this.armySetupController.setBattleScene(this.battleScene);
     this.armySetupController.setEditArmyScene(this.armyPopupScene);
+    this.armySetupController.setAddUnitsScene(this.addUnitScene);
+    this.armySetupController.setArmyScene(this.armySetupScene);
 
     //Setting up the how to play scenes.
     this.howToPlayController.setHomeScene(menuScene);
 
     //Setting up the Battle scenes.
     this.battleController.setArmyScene(this.armySetupScene);
-    this.battleController.sethomeScene(this.menuScene);
 
     //Setting the ArmyPopup scenes.
-      this.armyPopupController.setArmyScene(this.armySetupScene);
+    this.armyPopupController.setArmyScene(this.armySetupScene);
+
+    //Setting the AddUnits scenes.
+    this.addUnitController.setArmyScene(this.armySetupScene);
+
+
 
     primaryStage.setTitle("Wargames");
     primaryStage.setResizable(false);

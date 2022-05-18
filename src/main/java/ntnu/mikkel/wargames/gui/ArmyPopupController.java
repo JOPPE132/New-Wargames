@@ -1,15 +1,23 @@
 package ntnu.mikkel.wargames.gui;
 
 
+import io.github.palexdev.materialfx.controls.MFXComboBox;
 import io.github.palexdev.materialfx.controls.MFXFilterComboBox;
 import io.github.palexdev.materialfx.controls.MFXTextField;
+import io.github.palexdev.materialfx.controls.legacy.MFXLegacyComboBox;
+import java.net.URL;
+import java.util.ResourceBundle;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Scene;
+import javafx.scene.control.ComboBox;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
-public class ArmyPopupController {
+public class ArmyPopupController implements Initializable {
 
   //FXML Elements
   @FXML
@@ -23,11 +31,23 @@ public class ArmyPopupController {
   @FXML
   private MFXTextField armor = new MFXTextField();
   @FXML
-  private MFXFilterComboBox unitType = new MFXFilterComboBox();
+  private MFXComboBox unitType = new MFXComboBox();
 
-  //scenes
+  //Scenes
   private Scene armySetupScene;
 
+  //Controllers
+  private ArmySetupController armySetupController;
+
+
+  @Override
+  public void initialize(URL url, ResourceBundle resourceBundle){
+    ObservableList<String>
+        list = FXCollections.observableArrayList("InfantryUnit", "CommanderUnit", "RangedUnit", "CavalryUnit");
+    unitType.setItems(list);
+    unitType.setPromptText("Unit");
+
+  }
 
 
   public void setArmyScene(Scene armyScene){
@@ -59,10 +79,6 @@ public class ArmyPopupController {
     this.amount.clear();
     this.armor.clear();
     this.attack.clear();
-    this.unitType.clear();
     this.health.clear();
   }
-
-
-
 }
