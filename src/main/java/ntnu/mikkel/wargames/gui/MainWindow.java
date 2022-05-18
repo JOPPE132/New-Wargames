@@ -20,12 +20,14 @@ public class MainWindow extends Application {
   private Scene howToPlayScene;
   private Scene battleScene;
   private Scene armySetupScene;
+  private Scene armyPopupScene;
 
   //Controllers
   private MenuController menuController;
   private ArmySetupController armySetupController;
   private HowToPlayController howToPlayController;
   private BattleController battleController;
+  private ArmyPopupController armyPopupController;
 
   //@SuppressWarnings("unchecked")
   @Override
@@ -35,8 +37,6 @@ public class MainWindow extends Application {
     FXMLLoader homePageLoader = new FXMLLoader(getClass().getResource("/ntnu.mikkel.wargames/HomePage.fxml"));
     Parent homePagePane = homePageLoader.load();
     this.menuScene = new Scene(homePagePane, 1440, 850);
-
-
 
 
     //Getting loader and a pane for ArmySetup scene.
@@ -58,6 +58,12 @@ public class MainWindow extends Application {
     this.battleScene = new Scene(battlePane, 1440, 850);
     battleController = battleLoader.getController();
 
+    //Loader for ArmyPopup.FXML
+    FXMLLoader popupLoader = new FXMLLoader(getClass().getResource("/ntnu.mikkel.wargames/ArmyPopup.fxml"));
+    Parent popupPane = popupLoader.load();
+    this.armyPopupScene = new Scene(popupPane, 750,550);
+    armyPopupController = popupLoader.getController();
+
     //Gets the different controllers in MenuController class
     menuController = homePageLoader.getController();
     menuController.setHowToPlayScene(this.howToPlayScene);
@@ -65,17 +71,21 @@ public class MainWindow extends Application {
 
 
     //Setting up the Army scenes.
-    this.armySetupController.setArmySetupScene(armySetupScene);
-    this.armySetupController.setBattleScene(battleScene);
+    this.armySetupController.setMenuScene(this.menuScene);
+    this.armySetupController.setBattleScene(this.battleScene);
+    this.armySetupController.setEditArmyScene(this.armyPopupScene);
 
     //Setting up the how to play scenes.
     this.howToPlayController.setHomeScene(menuScene);
 
     //Setting up the Battle scenes.
-    this.battleController.setArmyScene(armySetupScene);
-    this.battleController.sethomeScene(menuScene);
+    this.battleController.setArmyScene(this.armySetupScene);
+    this.battleController.sethomeScene(this.menuScene);
 
+    //Setting the ArmyPopup scenes.
+      this.armyPopupController.setArmyScene(this.armySetupScene);
 
+    primaryStage.setTitle("Wargames");
     primaryStage.setResizable(false);
     primaryStage.setScene(this.menuScene);
     primaryStage.show();
@@ -84,8 +94,6 @@ public class MainWindow extends Application {
     System.out.println(e.getMessage());
   }
   }
-
-
 
   @FXML
   private void exitApplication(Stage stage){
