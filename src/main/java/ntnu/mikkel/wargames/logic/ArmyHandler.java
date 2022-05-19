@@ -55,7 +55,7 @@ public class ArmyHandler {
   public ArrayList<Unit> readArmyFromFile(String filename) throws FileNotFoundException {
     int count = 0;
     String line = null;
-    ArrayList<Unit> fileUnits = army.getArrayList();
+    //ArrayList<Unit> fileUnits = army.getArrayList();
 
 
     //"C://Programfiler//Hobbyprogrammering/Armies/army1.txt"

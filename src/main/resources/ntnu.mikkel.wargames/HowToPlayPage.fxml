@@ -32,7 +32,7 @@
                   <Font name="Impact" size="32.0" />
                </font>
             </MFXButton>
-            <TextArea layoutX="113.0" layoutY="104.0" prefHeight="467.0" prefWidth="492.0" text="In order to play you need to setup two Armies for Battle. The &#10;Armies can be created and edited by pressing the Edit Army&#10;button. You can also add and remove units from an existing&#10;Army in order to create an Army just the way you want.&#10;&#10;1) Press Edit Army 1 button, enter Army name, unit name, health,&#10;attack and amount of armor. &#10;&#10;2) Press save to add the units to the Tablecollumn. There you will&#10;be able to see your Army with the total amount of units, their&#10;health, attack and armor.&#10;&#10;    2.1) You can remove units by highlighting their row on the &#10;           tablecollumn and press &quot;remove unit&quot;.&#10;">
+            <TextArea editable="false" layoutX="113.0" layoutY="104.0" prefHeight="467.0" prefWidth="492.0" text="In order to play you need to setup two Armies for Battle. The &#10;Armies can be created and edited by pressing the Edit Army&#10;button. You can also add and remove units from an existing&#10;Army in order to create an Army just the way you want.&#10;&#10;1) Press Edit Army 1 button, enter Army name, unit name, health,&#10;attack and amount of armor. &#10;&#10;2) Press save to add the units to the Tablecollumn. There you will&#10;be able to see your Army with the total amount of units, their&#10;health, attack and armor.&#10;&#10;    2.1) You can remove units by highlighting their row on the &#10;           tablecollumn and press &quot;remove unit&quot;.&#10;">
                <font>
                   <Font size="16.0" />
                </font>
@@ -48,7 +48,7 @@
                   <Font size="34.0" />
                </font>
             </Label>
-            <TextArea layoutX="113.0" layoutY="105.0" prefHeight="467.0" prefWidth="492.0" text="When you have prepared the two Armies, you are now able to &#10;simulate a Battle! The Battle ">
+            <TextArea editable="false" layoutX="113.0" layoutY="105.0" prefHeight="467.0" prefWidth="492.0" text="When you have prepared the two Armies, you are now able to &#10;simulate a Battle! The Battle ">
                <font>
                   <Font size="16.0" />
                </font>

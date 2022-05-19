@@ -54,7 +54,6 @@ public class MenuController implements Initializable {
 
   @FXML
   public void ExitButtonPressed(ActionEvent event) {
-    System.out.println("dwjdj");
     Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
     alert.setTitle("Exit");
     alert.setHeaderText("You are about to exit Wargames.");

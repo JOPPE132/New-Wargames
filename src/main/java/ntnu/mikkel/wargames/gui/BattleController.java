@@ -40,9 +40,6 @@ public class BattleController implements Initializable {
     }
   }
 
-
-
-
   private void setScene(Stage primaryStage, Scene newScene){
     primaryStage.hide();
     primaryStage.setScene(newScene);

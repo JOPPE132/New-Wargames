@@ -3,7 +3,7 @@ package ntnu.mikkel.wargames.data;
 /**
  * Superclass represents a Unit in a heritage hierarchy.
  */
-public abstract class Unit {
+public class Unit {
 
   private static final int MAX_HEALTH = 100;
   private static final int MAX_ARMOR = 100;
@@ -36,9 +36,9 @@ public abstract class Unit {
     damageHandler = new DamageHandler();
   }
 
-  abstract int getResistBonus();
+  //abstract int getResistBonus();
 
-  abstract int getAttackBonus();
+  //abstract int getAttackBonus();
 
   /**
    * Represents an attack from a unit to another.
@@ -142,5 +142,13 @@ public abstract class Unit {
         ", health: " + health +
         ", armor: " + armor +
         ", attack: " + attack;
+  }
+
+  public int getAttackBonus() {
+    return 2;
+  }
+
+  public int getResistBonus() {
+    return 2;
   }
 }

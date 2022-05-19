@@ -80,8 +80,6 @@ public class MainWindow extends Application {
     //Setting up the Army scenes.
     this.armySetupController.setMenuScene(this.menuScene);
     this.armySetupController.setBattleScene(this.battleScene);
-    this.armySetupController.setEditArmyScene(this.armyPopupScene);
-    this.armySetupController.setAddUnitsScene(this.addUnitScene);
     this.armySetupController.setArmyScene(this.armySetupScene);
 
     //Setting up the how to play scenes.

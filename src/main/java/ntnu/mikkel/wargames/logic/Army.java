@@ -13,13 +13,10 @@ import ntnu.mikkel.wargames.data.Unit;
  */
 public class Army {
 
-  private final String name;
+  private String name;
   private final ArrayList<Unit> units;
   private final ArmyHandler armyHandler;
 
-  public void fillHumanArmy() {
-    ArmyHandler.writeToFile();
-  }
 
   public Army(String name) throws IOException {
     if (name == null || name.isBlank()) {
@@ -30,7 +27,7 @@ public class Army {
     units = new ArrayList<>();
   }
 
-  public ArrayList<Unit> getArrayList(){
+  public List<Unit> getArrayList(){
     return units;
   }
 
@@ -78,6 +75,11 @@ public class Army {
       index++;
     }
   }
+
+  public void setName(String name){
+    this.name = name;
+  }
+
 
   /**
    * Method removes a unit from an army.
