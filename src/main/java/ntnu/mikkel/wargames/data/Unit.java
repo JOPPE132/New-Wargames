@@ -8,12 +8,11 @@ public class Unit {
   private static final int MAX_HEALTH = 100;
   private static final int MAX_ARMOR = 100;
   private static final int MAX_ATTACK = 100;
-  private DamageHandler damageHandler;
+  private final DamageHandler damageHandler;
   private String name;
   private int health;
   private int armor;
   private int attack;
-
 
   /**
    * Constructor creates an object of Unit.
@@ -23,12 +22,7 @@ public class Unit {
    * @param armor  the armor of the unit.
    * @param attack the attack damage of the unit.
    */
-  protected Unit(String name, int health, int armor, int attack) throws IllegalArgumentException {
-    if (name == null || name.isBlank() && health >= 0 && health < MAX_HEALTH && //TODO FIKS
-        armor >= 0 && armor < MAX_ARMOR && attack >= 0 && attack < MAX_ATTACK) {
-
-      throw new IllegalArgumentException("Something wrong happend. Please try again.");
-    }
+  protected Unit(String name, int health, int attack, int armor) throws IllegalArgumentException {
     this.setName(name);
     this.setHealth(health);
     this.setArmor(armor);
@@ -36,20 +30,15 @@ public class Unit {
     damageHandler = new DamageHandler();
   }
 
-  //abstract int getResistBonus();
-
-  //abstract int getAttackBonus();
-
   /**
    * Represents an attack from a unit to another.
    *
    * @param opponent the opponent you wish to attack.
    */
-  public void attack(Unit opponent) {
+  public void attack(Unit opponent) throws IllegalArgumentException {
     if (opponent == null) {
       throw new IllegalArgumentException("Opponent can not be null.");
-    }
-    if (opponent.isAlive()) {
+    } else {
       damageHandler.reduceHealth(opponent);
     }
   }
@@ -112,23 +101,65 @@ public class Unit {
    * Sets a new health for a unit.
    *
    * @param newHealth sets the new amount of health of a unit.
+   * @throws IllegalArgumentException invalid value.
    */
-  public void setHealth(int newHealth) {
-    if (newHealth >= 0 && newHealth < MAX_HEALTH) {
+  public void setHealth(int newHealth) throws IllegalArgumentException {
+    if (newHealth <= 0 || newHealth >= MAX_HEALTH) { //MAX_HEALTH = 100;
+      throw new IllegalArgumentException("Illegal value.");
+    } else {
       this.health = newHealth;
     }
   }
 
-  public void setName(String name){
-    this.name = name;
+  /**
+   * Sets a new name of Unit.
+   *
+   * @param newName the new Name of the Unit.
+   * @throws IllegalArgumentException invalid value.
+   */
+  public void setName(String newName) throws IllegalArgumentException {
+    if (name.isBlank() || name == null) { //Name can not be blank or null.
+      throw new IllegalArgumentException("Illegal value.");
+    } else {
+      this.name = name;
+    }
   }
 
-  public void setArmor(int armor){
-    this.armor = armor;
+  /**
+   * Sets a new amount of Armor of Unit.
+   *
+   * @param newArmor the new amount of Armor of Unit.
+   * @throws IllegalArgumentException invalid value.
+   */
+  public void setArmor(int newArmor) throws IllegalArgumentException {
+    if (newArmor <= 0 || newArmor >= MAX_ARMOR) { //MAX_ARMOR = 100
+      throw new IllegalArgumentException("Illegal value.");
+    } else {
+      this.armor = newArmor;
+    }
   }
 
-  public void setAttack(int attack){
-    this.attack = attack;
+  /**
+   * Sets a new amount of Attack of Unit.
+   *
+   * @param newAttack the new amount of attack of Unit.
+   * @throws IllegalArgumentException invalud value.
+   */
+  public void setAttack(int newAttack) throws IllegalArgumentException {
+    if (newAttack <= 0 || newAttack >= MAX_ATTACK) { //MAX_ATTACK = 100
+      throw new IllegalArgumentException("Illegal value.");
+    } else {
+      this.attack = newAttack;
+    }
+  }
+
+  /**
+   * Sets new health in damagedealer with no exception.
+   *
+   * @param newHealth new health of Unit.
+   */
+  public void setHealthFromDamageDealer(int newHealth) {
+    this.health = newHealth;
   }
 
   /**

@@ -7,10 +7,6 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
-import ntnu.mikkel.wargames.data.CavalryUnit;
-import ntnu.mikkel.wargames.data.CommanderUnit;
-import ntnu.mikkel.wargames.data.InfantryUnit;
-import ntnu.mikkel.wargames.data.RangedUnit;
 import ntnu.mikkel.wargames.data.Unit;
 
 /**
@@ -75,9 +71,6 @@ public class ArmyHandler {
       if (scanner.hasNextLine()) { //hvis første linje starter med CavalryUnit
 
         //scanner.s
-
-        //https://www.youtube.com/watch?v=-iVTEzwgJ2s&ab_channel=MITEECSman
-
 
         //units.add(new CavalryUnit("Gromp", 100));
       }

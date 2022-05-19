@@ -1,5 +1,8 @@
 package ntnu.mikkel.wargames.data;
 
+/**
+ * Represents a CavalryUnit. CavalryUnit is a children of Unit in heritage hierarchy.
+ */
 public class CavalryUnit extends Unit {
 
   /**
@@ -42,4 +45,3 @@ public class CavalryUnit extends Unit {
     return 1;
   }
 }
-

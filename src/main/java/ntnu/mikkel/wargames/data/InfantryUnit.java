@@ -1,5 +1,8 @@
 package ntnu.mikkel.wargames.data;
 
+/**
+ * Represents an InfantryUnit. InfantryUnit is a children of Unit in heritage hierarchy.
+ */
 public class InfantryUnit extends Unit {
 
   /**
@@ -42,4 +45,3 @@ public class InfantryUnit extends Unit {
     return 1;
   }
 }
-

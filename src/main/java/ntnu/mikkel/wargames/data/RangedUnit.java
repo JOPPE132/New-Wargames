@@ -1,9 +1,12 @@
 package ntnu.mikkel.wargames.data;
 
+/**
+ * Represents a RangedUnit. RangedUnit is a children of Unit in heritage hierarchy.
+ */
 public class RangedUnit extends Unit {
 
   /**
-   * Creates an object ov CavalryUnit.
+   * Creates an object of CavalryUnit.
    *
    * @param name   name of the unit.
    * @param health health of the unit.

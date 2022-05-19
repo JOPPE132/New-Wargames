@@ -2,51 +2,87 @@ package ntnu.mikkel.wargames.data;
 
 import java.util.Random;
 
+/**
+ * Class represents any type of damage dealing.
+ */
 public class DamageHandler {
 
-  private Random random;
+  private final Random random;
 
-  public DamageHandler(){
+  /**
+   * Creates an object of Damagehandler.
+   */
+  public DamageHandler() {
     random = new Random();
   }
 
-  private int getRandomNumber(){
+  /**
+   * Returns a random number between 0(inclusive) and 19. 20 is exclusive.
+   *
+   * @return a random number between 1 and 19.
+   */
+  private int getRandomNumber() {
     int randomNumber = random.nextInt(20);
     return randomNumber;
   }
 
+  /**
+   * Algorithm for damage dealing. If the randomNumber() rolls 0 or 10, damage is normal.
+   * If randomNumber() rolls 11 or 12, damage is increased by 1.
+   * If randomNumber() rolls 13 or 14, damage is increased by 2.
+   * If randomNumber() rolls 15, damage is increased by 3.
+   *
+   * @param unit the Unit you wish to attack.
+   */
   public void reduceHealth(Unit unit) {
     int randomNumber = getRandomNumber();
-    try {
-      if(0 <= randomNumber && randomNumber <= 10){ //Normal damage
-        int newHealth = unit.getHealth() - ((unit.getAttack() + unit.getAttackBonus()) + (unit.getArmor() + unit.getResistBonus()));
-        if(unit.getHealth() > newHealth){
-          unit.setHealth(newHealth);
-        }
-      }
 
-      if(11 <= randomNumber && randomNumber <= 12){ //+1 damage
-        int newHealth = unit.getHealth() - ((unit.getAttack() + unit.getAttackBonus() + 1) + (unit.getArmor() + unit.getResistBonus()));
-        if(unit.getHealth() > newHealth){
+    if (0 <= randomNumber && randomNumber <= 10) { //Normal damage
+      int newHealth = unit.getHealth() -
+          ((unit.getAttack() + unit.getAttackBonus()) + (unit.getArmor() + unit.getResistBonus()));
+      if (unit.getHealth() > newHealth) {
+        if (newHealth <= 0) {
+          unit.setHealthFromDamageDealer(0);
+        } else {
           unit.setHealth(newHealth);
         }
       }
+    }
 
-      if(13 <= randomNumber && randomNumber <= 14){ //+2 damage
-        int newHealth = unit.getHealth() - ((unit.getAttack() + unit.getHealth() + 2) + (unit.getHealth() + unit.getResistBonus()));
-        if(unit.getHealth() > newHealth){
+    if (11 <= randomNumber && randomNumber <= 12) { //+1 Damage
+      int newHealth = unit.getHealth() -
+          ((unit.getAttack() + unit.getAttackBonus()) + (unit.getArmor() + unit.getResistBonus()));
+      if (unit.getHealth() > newHealth) {
+        if (newHealth <= 0) {
+          unit.setHealthFromDamageDealer(0);
+        } else {
           unit.setHealth(newHealth);
         }
       }
+    }
 
-      if(randomNumber == 15){ //+3 damage
-        int newHealth = unit.getHealth() - ((unit.getAttack() + unit.getAttack() + 3) + (unit.getArmor() + unit.getResistBonus()));
-        if(unit.getHealth() > newHealth){
+    if (13 <= randomNumber && randomNumber <= 14) { //+2 Damage
+      int newHealth = unit.getHealth() -
+          ((unit.getAttack() + unit.getAttackBonus()) + (unit.getArmor() + unit.getResistBonus()));
+      if (unit.getHealth() > newHealth) {
+        if (newHealth <= 0) {
+          unit.setHealthFromDamageDealer(0);
+        } else {
           unit.setHealth(newHealth);
         }
       }
-    } catch (Exception e) {
-      System.out.println("New health can not increase.");
+    }
+
+    if (randomNumber == 15) { //+3 Damage
+      int newHealth = unit.getHealth() -
+          ((unit.getAttack() + unit.getAttackBonus()) + (unit.getArmor() + unit.getResistBonus()));
+      if (unit.getHealth() > newHealth) {
+        if (newHealth <= 0) {
+          unit.setHealthFromDamageDealer(0);
+        } else {
+          unit.setHealth(newHealth);
+        }
+      }
     }
   }
 }

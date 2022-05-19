@@ -27,7 +27,7 @@ public class Army {
     units = new ArrayList<>();
   }
 
-  public List<Unit> getArrayList(){
+  public List<Unit> getArrayList() {
     return units;
   }
 
@@ -76,7 +76,7 @@ public class Army {
     }
   }
 
-  public void setName(String name){
+  public void setName(String name) {
     this.name = name;
   }
 
@@ -162,12 +162,3 @@ public class Army {
     return commanderUnits;
   }
 }
-
-
-
-
-
-
-
-
-

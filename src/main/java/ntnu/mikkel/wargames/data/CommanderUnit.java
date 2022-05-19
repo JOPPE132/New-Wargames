@@ -1,5 +1,8 @@
 package ntnu.mikkel.wargames.data;
 
+/**
+ * Represents a CommanderUnit. CommanderUnit is a children of unit in heritage hierarchy.
+ */
 public class CommanderUnit extends CavalryUnit {
 
   /**
