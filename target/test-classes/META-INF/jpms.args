@@ -1,0 +1,4 @@
+--patch-module
+ntnu.mikkel.wargames=_
+--add-reads
+ntnu.mikkel.wargames=ALL-UNNAMED

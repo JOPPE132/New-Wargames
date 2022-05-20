@@ -1,14 +1,13 @@
 package ntnu.mikkel.wargames.gui;
 
-import java.net.URL;
 import javafx.application.Application;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
 import javafx.stage.Stage;
-import javafx.fxml.FXMLLoader;
 
 /**
  * Class sets up all different scenes with corresponding FXML-page.

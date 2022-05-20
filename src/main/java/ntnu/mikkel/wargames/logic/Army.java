@@ -23,8 +23,8 @@ public class Army {
       throw new IllegalArgumentException("Name can not be null.");
     }
     this.name = name;
-    armyHandler = new ArmyHandler();
-    units = new ArrayList<>();
+    this.armyHandler = new ArmyHandler();
+    this.units = new ArrayList<>();
   }
 
   public List<Unit> getArrayList() {
@@ -97,6 +97,15 @@ public class Army {
    */
   public boolean hasUnits() {
     return units.size() > 0;
+  }
+
+  /**
+   * Returns the size of an Army.
+   *
+   * @return the size of an Army.
+   */
+  public int getSize(){
+    return units.size();
   }
 
   /**

@@ -1,0 +1,1 @@
+packageSearchIndex = [{"l":"All Packages","u":"allpackages-index.html"},{"m":"ntnu.mikkel.wargames","l":"ntnu.mikkel.wargames"},{"m":"ntnu.mikkel.wargames","l":"ntnu.mikkel.wargames.data"},{"m":"ntnu.mikkel.wargames","l":"ntnu.mikkel.wargames.gui"}];updateSearchResults();

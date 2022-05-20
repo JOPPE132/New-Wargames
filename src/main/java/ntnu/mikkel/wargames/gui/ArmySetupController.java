@@ -1,8 +1,8 @@
 package ntnu.mikkel.wargames.gui;
 
 import io.github.palexdev.materialfx.controls.MFXButton;
+import io.github.palexdev.materialfx.controls.MFXComboBox;
 import io.github.palexdev.materialfx.controls.MFXTextField;
-import java.awt.event.ActionEvent;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -15,16 +15,13 @@ import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
-import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
-import javax.swing.Action;
 import ntnu.mikkel.wargames.data.CavalryUnit;
 import ntnu.mikkel.wargames.data.CommanderUnit;
 import ntnu.mikkel.wargames.data.InfantryUnit;
 import ntnu.mikkel.wargames.data.RangedUnit;
 import ntnu.mikkel.wargames.data.Unit;
-import ntnu.mikkel.wargames.data.UnitType;
 import ntnu.mikkel.wargames.logic.Army;
 
 
@@ -34,8 +31,6 @@ public class ArmySetupController implements Initializable {
   private Label armyOneLabel1 = new Label();
   @FXML
   private MFXTextField armyName1 = new MFXTextField();
-  @FXML
-  private MFXTextField unitType1 = new MFXTextField();
   @FXML
   private MFXTextField unitName1 = new MFXTextField();
   @FXML
@@ -62,18 +57,20 @@ public class ArmySetupController implements Initializable {
   private MFXTextField armor2 = new MFXTextField();
   @FXML
   private MFXButton addUnits1Button = new MFXButton();
+  @FXML
+  private MFXComboBox comboBox = new MFXComboBox();
 
   //TableView
   @FXML
   TableView<Unit> tableView;
   @FXML
-  TableColumn<Unit, String> nameCol;
+  TableColumn<Unit, String> nameColumn;
   @FXML
-  TableColumn<Unit, Integer> healthCol;
+  TableColumn<Unit, Integer> healthColumn;
   @FXML
-  TableColumn<Unit, Integer> attackCol;
+  TableColumn<Unit, Integer> attackColumn;
   @FXML
-  TableColumn<Unit, Integer> armorCol;
+  TableColumn<Unit, Integer> armorColumn;
 
   //Scenes
   private Scene homeScene;
@@ -99,15 +96,15 @@ public class ArmySetupController implements Initializable {
   public void initialize(URL url, ResourceBundle resourceBundle) {
       try{
         //Create business logic.
-        this.army = new Army("");
+        this.army = new Army("Army");
+      this.comboBox.getItems().addAll("InfantryUnit", "CavalryUnit", "RangedUnit", "CommanderUnit");
 
 
-      tableView.getColumns().addAll(nameCol, healthCol, attackCol, armorCol);
-
-      nameCol.setCellValueFactory(new PropertyValueFactory<>("Name"));
-      healthCol.setCellValueFactory(new PropertyValueFactory<>("Health"));
-      attackCol.setCellValueFactory(new PropertyValueFactory<>("Attack"));
-      armorCol.setCellValueFactory(new PropertyValueFactory<>("Armor"));
+      //nameColumn.setCellValueFactory(new PropertyValueFactory<>("Name"));
+      //healthColumn.setCellValueFactory(new PropertyValueFactory<>("Health"));
+      //attackColumn.setCellValueFactory(new PropertyValueFactory<>("Attack"));
+      //armorColumn.setCellValueFactory(new PropertyValueFactory<>("Armor"));
+      //tableView.getColumns().addAll(nameColumn, healthColumn, attackColumn, armorColumn);
 
       this.observableList = FXCollections.observableArrayList(this.army.getArrayList());
       this.tableView.setItems(this.observableList);
@@ -145,7 +142,7 @@ public class ArmySetupController implements Initializable {
   @FXML
   public void addUnitButtonPressed(MouseEvent mouseEvent) {
 
-      if (unitType1.getText().equals("InfantryUnit")) {
+      if (comboBox.getText().equals("InfantryUnit")) {
         Unit unit = new InfantryUnit(unitName1.getText(), Integer.parseInt(health1.getText()),
             Integer.parseInt(armor1.getText()), Integer.parseInt(attack1.getText()));
 
@@ -153,21 +150,21 @@ public class ArmySetupController implements Initializable {
         this.updateObservableList();
       }
 
-      if (unitType1.getText().equals("CavalryUnit")) {
+      if (comboBox.getText().equals("CavalryUnit")) {
         Unit unit = new CavalryUnit(unitName1.getText(), Integer.parseInt(health1.getText()),
             Integer.parseInt(armor1.getText()), Integer.parseInt(attack1.getText()));
         this.army.addUnit(unit);
         this.updateObservableList();
       }
 
-      if (unitType1.getText().equals("CommanderUnit")) {
+      if (comboBox.getText().equals("CommanderUnit")) {
         Unit unit = new CommanderUnit(unitName1.getText(), Integer.parseInt(health1.getText()),
             Integer.parseInt(armor1.getText()), Integer.parseInt(attack1.getText()));
         this.army.addUnit(unit);
         this.updateObservableList();
       }
 
-      if (unitType1.getText().equals("CavalryUnit")) {
+      if (comboBox.getText().equals("CavalryUnit")) {
         Unit unit = new RangedUnit(unitName1.getText(), Integer.parseInt(health1.getText()),
             Integer.parseInt(armor1.getText()), Integer.parseInt(attack1.getText()));
         this.army.addUnit(unit);
@@ -192,9 +189,9 @@ public class ArmySetupController implements Initializable {
     }
 
 
-//    private void fillDummyWithData(){
-//    this.army.addUnit(new CavalryUnit("CavalryUnit", 10, 10, 10));
-//    this.army.addUnit(new InfantryUnit("InfantryUnit", 10, 10, 10));
-//    }
+    private void fillWithDummyData(){
+    this.army.addUnit(new CavalryUnit("CavalryUnit", 10, 10, 10));
+    this.army.addUnit(new InfantryUnit("InfantryUnit", 10, 10, 10));
+    }
 
 }

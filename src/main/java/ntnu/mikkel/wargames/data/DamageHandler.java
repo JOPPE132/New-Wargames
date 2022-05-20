@@ -22,15 +22,17 @@ public class DamageHandler {
    * @return a random number between 1 and 19.
    */
   private int getRandomNumber() {
-    int randomNumber = random.nextInt(20);
+    int randomNumber = random.nextInt(16);
     return randomNumber;
   }
 
   /**
-   * Algorithm for damage dealing. If the randomNumber() rolls 0 or 10, damage is normal.
+   * Algorithm for damage dealing. Before an attack the dice is always rolled for a chance for critical strike.  Inclusive 0, exclusive 16
+   * If randomNumber() rolls 0 or 10, damage is normal.
    * If randomNumber() rolls 11 or 12, damage is increased by 1.
    * If randomNumber() rolls 13 or 14, damage is increased by 2.
    * If randomNumber() rolls 15, damage is increased by 3.
+   *
    *
    * @param unit the Unit you wish to attack.
    */
