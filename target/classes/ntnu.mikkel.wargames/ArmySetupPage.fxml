@@ -25,25 +25,17 @@
    <left>
       <AnchorPane prefHeight="641.0" prefWidth="719.0" BorderPane.alignment="CENTER">
          <children>
-            <TableView fx:id="tableView" layoutX="236.0" layoutY="95.0" prefHeight="394.0" prefWidth="458.0">
-              <columns>
-                  <TableColumn fx:id="nameColumn" minWidth="0.0" prefWidth="91.0" text="Name" />
-                  <TableColumn fx:id="healthColumn" minWidth="0.0" prefWidth="121.0" text="Health" />
-                  <TableColumn fx:id="armorColumn" minWidth="0.0" prefWidth="106.0" text="Armor" />
-                  <TableColumn fx:id="attackColumn" prefWidth="139.0" text="Attack" />
-              </columns>
-            </TableView>
             <Label fx:id="armyOneLabel1" layoutX="236.0" layoutY="27.0" text="Army 1">
                <font>
                   <Font size="32.0" />
                </font>
             </Label>
-            <MFXButton fx:id="addUnits1Button" buttonType="RAISED" layoutX="283.0" layoutY="581.0" onMouseClicked="#addUnitButtonPressed" prefHeight="36.0" prefWidth="139.0" rippleColor="WHITE" style="-fx-background-color: #414673;" text="Add units" textFill="WHITE">
+            <MFXButton buttonType="RAISED" layoutX="283.0" layoutY="561.0" onMouseClicked="#addUnitButtonPressed" prefHeight="36.0" prefWidth="139.0" rippleColor="WHITE" style="-fx-background-color: #414673;" text="Add units" textFill="WHITE">
                <font>
                   <Font size="16.0" />
                </font>
             </MFXButton>
-            <MFXButton buttonType="RAISED" layoutX="501.0" layoutY="581.0" prefHeight="36.0" prefWidth="139.0" rippleColor="WHITE" style="-fx-background-color: #414673;" text="Remove units" textFill="WHITE">
+            <MFXButton buttonType="RAISED" layoutX="501.0" layoutY="561.0" onMouseClicked="#removeUnit" prefHeight="36.0" prefWidth="139.0" rippleColor="WHITE" style="-fx-background-color: #414673;" text="Remove units" textFill="WHITE">
                <font>
                   <Font size="16.0" />
                </font>
@@ -54,47 +46,50 @@
                   <Font size="14.0" />
                </font>
             </Label>
-            <Label layoutX="45.0" layoutY="102.0" text="Unit type">
+            <Label layoutX="45.0" layoutY="106.0" text="Unit type">
                <font>
                   <Font size="14.0" />
                </font>
             </Label>
-            <Label layoutX="46.0" layoutY="265.0" text="Amount">
+            <Label layoutX="46.0" layoutY="274.0" text="Health">
                <font>
                   <Font size="14.0" />
                </font>
             </Label>
-            <MFXTextField layoutX="46.0" layoutY="281.0" prefHeight="49.0" prefWidth="140.0" />
-            <Label layoutX="46.0" layoutY="348.0" text="Health">
+            <MFXTextField fx:id="health1" layoutX="46.0" layoutY="293.0" prefHeight="49.0" prefWidth="138.0" />
+            <Label layoutX="46.0" layoutY="360.0" text="Attack">
                <font>
                   <Font size="14.0" />
                </font>
             </Label>
-            <MFXTextField layoutX="46.0" layoutY="364.0" prefHeight="49.0" prefWidth="138.0" />
-            <Label layoutX="46.0" layoutY="428.0" text="Attack">
+            <MFXTextField fx:id="attack1" layoutX="46.0" layoutY="379.0" prefHeight="49.0" prefWidth="138.0" />
+            <Label layoutX="46.0" layoutY="447.0" text="Armor">
                <font>
                   <Font size="14.0" />
                </font>
             </Label>
-            <MFXTextField layoutX="46.0" layoutY="444.0" prefHeight="49.0" prefWidth="138.0" />
-            <Label layoutX="46.0" layoutY="516.0" text="Armor">
+            <MFXTextField fx:id="armor1" layoutX="45.0" layoutY="465.0" prefHeight="49.0" prefWidth="138.0" />
+            <Label layoutX="45.0" layoutY="187.0" text="Unit name">
                <font>
                   <Font size="14.0" />
                </font>
             </Label>
-            <MFXTextField layoutX="45.0" layoutY="532.0" prefHeight="49.0" prefWidth="138.0" />
-            <Label layoutX="45.0" layoutY="184.0" text="Unit name">
-               <font>
-                  <Font size="14.0" />
-               </font>
-            </Label>
-            <MFXTextField layoutX="46.0" layoutY="200.0" prefHeight="49.0" prefWidth="141.0" />
-            <MFXButton buttonType="RAISED" layoutX="284.0" layoutY="518.0" onMouseClicked="#setArmyName" prefHeight="36.0" prefWidth="139.0" rippleColor="WHITE" style="-fx-background-color: #414673;" text="Set Army Name" textFill="WHITE">
+            <MFXTextField fx:id="unitName1" layoutX="46.0" layoutY="205.0" prefHeight="49.0" prefWidth="141.0" />
+            <MFXButton buttonType="RAISED" layoutX="73.0" layoutY="561.0" onMouseClicked="#setArmyName" prefHeight="36.0" prefWidth="139.0" rippleColor="WHITE" style="-fx-background-color: #414673;" text="Set Army Name" textFill="WHITE">
                <font>
                   <Font size="16.0" />
                </font>
             </MFXButton>
-            <MFXComboBox fx:id="comboBox" layoutX="46.0" layoutY="121.0" prefHeight="40.0" prefWidth="180.0" />
+            <MFXComboBox fx:id="comboBox" layoutX="46.0" layoutY="125.0" prefHeight="40.0" prefWidth="180.0" />
+            <TableView fx:id="tableView" layoutX="236.0" layoutY="95.0" prefHeight="419.0" prefWidth="458.0">
+              <columns>
+                  <TableColumn fx:id="nameColumn" minWidth="0.0" prefWidth="91.0" text="Name" />
+                  <TableColumn fx:id="healthColumn" minWidth="0.0" prefWidth="71.0" text="Health" />
+                  <TableColumn fx:id="armorColumn" minWidth="0.0" prefWidth="98.0" text="Armor" />
+                  <TableColumn fx:id="attackColumn" prefWidth="93.0" text="Attack" />
+                  <TableColumn fx:id="unitTypeColumn" prefWidth="104.0" text="Type" />
+              </columns>
+            </TableView>
          </children>
       </AnchorPane>
    </left>
@@ -122,78 +117,71 @@
    <center>
       <AnchorPane prefHeight="641.0" prefWidth="713.0" BorderPane.alignment="CENTER">
          <children>
-            <Label layoutX="275.0" layoutY="33.0" text="Army 2">
-               <font>
-                  <Font size="32.0" />
-               </font>
-            </Label>
-            <MFXButton buttonType="RAISED" layoutX="328.0" layoutY="571.0" prefHeight="36.0" prefWidth="139.0" rippleColor="WHITE" style="-fx-background-color: #414673;" text="Add units" textFill="WHITE">
-               <font>
-                  <Font size="16.0" />
-               </font>
-            </MFXButton>
-            <MFXButton buttonType="RAISED" layoutX="525.0" layoutY="570.0" prefHeight="36.0" prefWidth="139.0" rippleColor="WHITE" style="-fx-background-color: #414673;" text="Remove units" textFill="WHITE">
-               <font>
-                  <Font size="16.0" />
-               </font>
-            </MFXButton>
-            <TableView layoutX="275.0" layoutY="100.0" prefHeight="386.0" prefWidth="415.0">
-               <columns>
-                  <TableColumn minWidth="0.0" prefWidth="91.0" text="Name" />
-                  <TableColumn prefWidth="90.0" text="Type" />
-                  <TableColumn minWidth="0.0" prefWidth="53.0" text="Amount" />
-                  <TableColumn minWidth="0.0" prefWidth="49.0" text="Health" />
-                  <TableColumn minWidth="0.0" prefWidth="54.0" text="Armor" />
-                  <TableColumn prefWidth="77.0" text="Attack" />
-               </columns>
-            </TableView>
-            <Label layoutX="52.0" layoutY="19.0" text="Army name">
+            <Label layoutX="52.0" layoutY="185.0" text="Unit name">
                <font>
                   <Font size="14.0" />
                </font>
             </Label>
-            <MFXTextField layoutX="52.0" layoutY="38.0" prefHeight="49.0" prefWidth="145.0" />
+            <Label layoutX="52.0" layoutY="357.0" text="Attack">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <MFXTextField fx:id="armor2" layoutX="52.0" layoutY="464.0" prefHeight="49.0" prefWidth="146.0" />
+            <Label layoutX="52.0" layoutY="447.0" text="Armor">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
             <Label layoutX="52.0" layoutY="97.0" text="Unit type">
                <font>
                   <Font size="14.0" />
                </font>
             </Label>
-            <MFXTextField layoutX="52.0" layoutY="116.0" prefHeight="49.0" prefWidth="145.0" />
-            <Label layoutX="52.0" layoutY="251.0" text="Amount">
+            <Label layoutX="52.0" layoutY="269.0" text="Health">
                <font>
                   <Font size="14.0" />
                </font>
             </Label>
-            <MFXTextField layoutX="52.0" layoutY="267.0" prefHeight="49.0" prefWidth="144.0" />
-            <Label layoutX="52.0" layoutY="337.0" text="Health">
+            <Label layoutX="52.0" layoutY="19.0" text="Army name">
                <font>
                   <Font size="14.0" />
                </font>
             </Label>
-            <MFXTextField layoutX="52.0" layoutY="353.0" prefHeight="49.0" prefWidth="146.0" />
-            <Label layoutX="52.0" layoutY="421.0" text="Attack">
+            <Label fx:id="armyTwoLabel1" layoutX="244.0" layoutY="27.0" text="Army 2">
                <font>
-                  <Font size="14.0" />
+                  <Font size="32.0" />
                </font>
             </Label>
-            <MFXTextField layoutX="52.0" layoutY="437.0" prefHeight="49.0" prefWidth="146.0" />
-            <Label layoutX="52.0" layoutY="516.0" text="Armor">
-               <font>
-                  <Font size="14.0" />
-               </font>
-            </Label>
-            <MFXTextField layoutX="52.0" layoutY="532.0" prefHeight="49.0" prefWidth="146.0" />
-            <Label layoutX="52.0" layoutY="174.0" text="Unit name">
-               <font>
-                  <Font size="14.0" />
-               </font>
-            </Label>
-            <MFXTextField layoutX="52.0" layoutY="190.0" prefHeight="49.0" prefWidth="145.0" />
-            <MFXButton buttonType="RAISED" layoutX="328.0" layoutY="507.0" onMouseClicked="#setArmyName" prefHeight="36.0" prefWidth="139.0" rippleColor="WHITE" style="-fx-background-color: #414673;" text="Set Army Name" textFill="WHITE">
+            <MFXButton buttonType="RAISED" layoutX="306.0" layoutY="562.0" onMouseClicked="#addUnitButton2Pressed" prefHeight="36.0" prefWidth="139.0" rippleColor="WHITE" style="-fx-background-color: #414673;" text="Add units" textFill="WHITE">
                <font>
                   <Font size="16.0" />
                </font>
             </MFXButton>
+            <MFXButton buttonType="RAISED" layoutX="525.0" layoutY="562.0" onMouseClicked="#removeUnit2" prefHeight="36.0" prefWidth="139.0" rippleColor="WHITE" style="-fx-background-color: #414673;" text="Remove units" textFill="WHITE">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </MFXButton>
+            <TableView fx:id="tableView2" layoutX="244.0" layoutY="92.0" prefHeight="420.0" prefWidth="446.0">
+               <columns>
+                  <TableColumn fx:id="nameColumn2" minWidth="0.0" prefWidth="117.0" text="Name" />
+                  <TableColumn fx:id="healthColumn2" minWidth="0.0" prefWidth="67.0" text="Health" />
+                  <TableColumn fx:id="armorColumn2" minWidth="0.0" prefWidth="71.0" text="Armor" />
+                  <TableColumn fx:id="attackColumn2" prefWidth="87.0" text="Attack" />
+                  <TableColumn fx:id="unitTypeColumn2" prefWidth="111.0" text="Type" />
+               </columns>
+            </TableView>
+            <MFXTextField fx:id="armyName2" layoutX="52.0" layoutY="38.0" prefHeight="49.0" prefWidth="145.0" />
+            <MFXTextField fx:id="health2" layoutX="52.0" layoutY="287.0" prefHeight="49.0" prefWidth="146.0" />
+            <MFXTextField fx:id="attack2" layoutX="52.0" layoutY="374.0" prefHeight="49.0" prefWidth="146.0" />
+            <MFXTextField fx:id="unitName2" layoutX="52.0" layoutY="202.0" prefHeight="49.0" prefWidth="145.0" />
+            <MFXButton buttonType="RAISED" layoutX="84.0" layoutY="562.0" onMouseClicked="#setArmy2Name" prefHeight="36.0" prefWidth="139.0" rippleColor="WHITE" style="-fx-background-color: #414673;" text="Set Army Name" textFill="WHITE">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </MFXButton>
+            <MFXComboBox fx:id="comboBox2" layoutX="50.0" layoutY="127.0" prefHeight="40.0" prefWidth="180.0" />
          </children>
       </AnchorPane>
    </center>

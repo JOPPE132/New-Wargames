@@ -36,19 +36,19 @@ public class MenuController implements Initializable {
     this.newHowToPlayScene = howToPlayScene;
   }
 
-  public void setArmySetupScene(Scene armySetupScene){
+  public void setArmySetupScene(Scene armySetupScene) {
     this.armySetupScene = armySetupScene;
   }
 
   @FXML
-  protected void howToPlayClick(MouseEvent mouseEvent){
-    Stage primaryStage = (Stage)((Node) mouseEvent.getSource()).getScene().getWindow();
+  protected void howToPlayClick(MouseEvent mouseEvent) {
+    Stage primaryStage = (Stage) ((Node) mouseEvent.getSource()).getScene().getWindow();
     this.setScene(primaryStage, this.newHowToPlayScene);
   }
 
   @FXML
-  protected void PlayClick(MouseEvent mouseEvent){
-    Stage primaryStage = (Stage)((Node) mouseEvent.getSource()).getScene().getWindow();
+  protected void PlayClick(MouseEvent mouseEvent) {
+    Stage primaryStage = (Stage) ((Node) mouseEvent.getSource()).getScene().getWindow();
     this.setScene(primaryStage, this.armySetupScene);
   }
 
@@ -63,7 +63,8 @@ public class MenuController implements Initializable {
     }
   }
 
-  public void recieveControllers(ArmySetupController armySetupController, HowToPlayController howToPlayController){
+  public void recieveControllers(ArmySetupController armySetupController,
+                                 HowToPlayController howToPlayController) {
     this.armySetupController = armySetupController;
     this.howToPlayController = howToPlayController;
   }

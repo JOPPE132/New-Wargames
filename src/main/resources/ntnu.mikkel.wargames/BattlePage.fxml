@@ -12,7 +12,7 @@
    <left>
       <AnchorPane prefHeight="850.0" prefWidth="193.0" style="-fx-background-color: #414673;" BorderPane.alignment="CENTER">
          <children>
-            <MFXButton layoutX="3.0" layoutY="63.0" prefHeight="75.0" prefWidth="186.0" text="Simulate">
+            <MFXButton layoutX="3.0" layoutY="63.0" onMouseClicked="#simulateButtonPressed" prefHeight="75.0" prefWidth="186.0" text="Simulate">
                <font>
                   <Font size="25.0" />
                </font>
@@ -38,7 +38,7 @@
    <center>
       <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
-            <Label layoutX="30.0" layoutY="42.0" prefHeight="47.0" prefWidth="168.0" text="Winner is..">
+            <Label fx:id="winnerLabel" layoutX="30.0" layoutY="42.0" prefHeight="47.0" prefWidth="168.0" text="Winner is..">
                <font>
                   <Font size="32.0" />
                </font>
@@ -53,7 +53,7 @@
                   <TableColumn prefWidth="129.0" text="Attack" />
                </columns>
             </TableView>
-            <Label layoutX="291.0" layoutY="42.0" prefHeight="47.0" prefWidth="155.0" text="...">
+            <Label layoutX="291.0" layoutY="42.0" prefHeight="47.0" prefWidth="155.0">
                <font>
                   <Font size="32.0" />
                </font>

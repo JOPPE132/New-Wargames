@@ -118,10 +118,10 @@ public class Unit {
    * @throws IllegalArgumentException invalid value.
    */
   public void setName(String newName) throws IllegalArgumentException {
-    if (name.isBlank() || name == null) { //Name can not be blank or null.
+    if (newName.isBlank() || newName == null) { //Name can not be blank or null.
       throw new IllegalArgumentException("Illegal value.");
     } else {
-      this.name = name;
+      this.name = newName;
     }
   }
 
@@ -175,10 +175,20 @@ public class Unit {
         ", attack: " + attack;
   }
 
+  /**
+   * Adds attack bonus to the unit when its attacking.
+   *
+   * @return the value of the attack bonus.
+   */
   public int getAttackBonus() {
     return 2;
   }
 
+  /**
+   * Adds defence bonus to the unit when its attacked.
+   *
+   * @return the value of the resist bonus.
+   */
   public int getResistBonus() {
     return 2;
   }

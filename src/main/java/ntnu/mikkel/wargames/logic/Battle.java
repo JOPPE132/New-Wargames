@@ -6,8 +6,8 @@ import ntnu.mikkel.wargames.data.Unit;
 
 public class Battle {
 
-  private final Army armyOne;
-  private final Army armyTwo;
+  private Army armyOne;
+  private Army armyTwo;
 
   /**
    * Creates an object of Battle.
@@ -37,10 +37,10 @@ public class Battle {
    * random class. The random chosen unit from Army 1 attacks a randomly chosen unit
    * from Army 2. If an unit dies from an attack, it is then removed from the army.
    */
-  public Army simulate() {
+  public Army simulate(Army armyOne, Army armyTwo) {
 
     Army winner = null;
-    while (armyOne.hasUnits() && armyTwo.hasUnits()) {
+      while (this.armyOne.hasUnits() && this.armyTwo.hasUnits()) {
 
       int combatOrder = firstAttackerNumberGenerator();
       Unit randomArmyOneUnit = armyOne.getRandomunit();

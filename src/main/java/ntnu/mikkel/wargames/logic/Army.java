@@ -15,7 +15,6 @@ public class Army {
 
   private String name;
   private final ArrayList<Unit> units;
-  private final ArmyHandler armyHandler;
 
 
   public Army(String name) throws IOException {
@@ -23,12 +22,11 @@ public class Army {
       throw new IllegalArgumentException("Name can not be null.");
     }
     this.name = name;
-    this.armyHandler = new ArmyHandler();
     this.units = new ArrayList<>();
   }
 
   public List<Unit> getArrayList() {
-    return units;
+    return this.units;
   }
 
   /**
