@@ -90,6 +90,16 @@
                   <TableColumn fx:id="unitTypeColumn" prefWidth="104.0" text="Type" />
               </columns>
             </TableView>
+            <Label layoutX="494.0" layoutY="27.0" text="Size:">
+               <font>
+                  <Font size="32.0" />
+               </font>
+            </Label>
+            <Label fx:id="sizeLabel" layoutX="566.0" layoutY="27.0" text="0">
+               <font>
+                  <Font size="32.0" />
+               </font>
+            </Label>
          </children>
       </AnchorPane>
    </left>
@@ -182,6 +192,16 @@
                </font>
             </MFXButton>
             <MFXComboBox fx:id="comboBox2" layoutX="50.0" layoutY="127.0" prefHeight="40.0" prefWidth="180.0" />
+            <Label layoutX="494.0" layoutY="27.0" text="Size:">
+               <font>
+                  <Font size="32.0" />
+               </font>
+            </Label>
+            <Label fx:id="sizeLabelArmy2" layoutX="566.0" layoutY="27.0" text="0">
+               <font>
+                  <Font size="32.0" />
+               </font>
+            </Label>
          </children>
       </AnchorPane>
    </center>

@@ -23,22 +23,23 @@ public class BattleController implements Initializable {
 
   private Scene armyScene;
   private ArmySetupController armySetupController;
-  private Battle battle;
   private Army armyOne;
   private Army armyTwo;
 
   @Override
   public void initialize(URL url, ResourceBundle resourceBundle) {
-    armySetupController = new ArmySetupController();
-    armyOne = armySetupController.getArmy();
-    armyTwo = armySetupController.getArmy2();
-      this.battle = new Battle(armyOne, armyTwo);
+    this.armySetupController = new ArmySetupController();
+
+    this.armyOne = armySetupController.getArmy();
+    this.armyTwo = armySetupController.getArmy2();
 
   }
 
 
   public void simulateButtonPressed(MouseEvent mouseEvent){
+    Battle battle = new Battle(null, null);
     Army winner = battle.simulate(armyOne, armyTwo);
+
     winnerLabel.setText(winner.toString());
   }
 

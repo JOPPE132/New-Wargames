@@ -62,6 +62,10 @@ public class ArmySetupController implements Initializable {
   private MFXComboBox comboBox = new MFXComboBox();
   @FXML
   private MFXComboBox comboBox2 = new MFXComboBox();
+  @FXML
+  private Label sizeLabel = new Label();
+  @FXML
+  private Label sizeLabelArmy2 = new Label();
 
   //TableView Army 1
   @FXML
@@ -138,7 +142,7 @@ public class ArmySetupController implements Initializable {
   @Override
   public void initialize(URL url, ResourceBundle resourceBundle) {
     try {
-      this.army = new Army("Army");
+      this.army = new Army("Army1");
       this.army2 = new Army("Army2");
 
       //TableView ARMY1
@@ -160,6 +164,7 @@ public class ArmySetupController implements Initializable {
       this.tableView2.getColumns().addAll(nameColumn2, healthColumn2, attackColumn2, armorColumn2);
       this.observableList2 = FXCollections.observableArrayList(this.army2.getArrayList());
       this.tableView2.setItems(this.observableList2);
+
     } catch (IOException e) {
       e.printStackTrace();
     }
@@ -223,6 +228,7 @@ public class ArmySetupController implements Initializable {
           Integer.parseInt(armor1.getText()), Integer.parseInt(attack1.getText()));
       this.army.addUnit(unit);
       this.updateObservableList();
+      this.sizeLabel.setText(String.valueOf(army.getSize()));
     }
 
 
@@ -231,6 +237,7 @@ public class ArmySetupController implements Initializable {
           Integer.parseInt(armor1.getText()), Integer.parseInt(attack1.getText()));
       this.army.addUnit(unit);
       this.updateObservableList();
+      this.sizeLabel.setText(String.valueOf(army.getSize()));
     }
 
     if (comboBox.getText().equals("CommanderUnit")) {
@@ -238,6 +245,7 @@ public class ArmySetupController implements Initializable {
           Integer.parseInt(armor1.getText()), Integer.parseInt(attack1.getText()));
       this.army.addUnit(unit);
       this.updateObservableList();
+      this.sizeLabel.setText(String.valueOf(army.getSize()));
     }
 
     if (comboBox.getText().equals("RangedUnit")) {
@@ -245,6 +253,7 @@ public class ArmySetupController implements Initializable {
           Integer.parseInt(armor1.getText()), Integer.parseInt(attack1.getText()));
       this.army.addUnit(unit);
       this.updateObservableList();
+      this.sizeLabel.setText(String.valueOf(army.getSize()));
     }
   }
 
@@ -261,6 +270,7 @@ public class ArmySetupController implements Initializable {
           Integer.parseInt(armor2.getText()), Integer.parseInt(attack2.getText()));
       this.army2.addUnit(unit);
       this.updateObservableList2();
+      this.sizeLabelArmy2.setText(String.valueOf(army2.getSize()));
     }
 
     if (comboBox2.getText().equals("CavalryUnit")) {
@@ -268,6 +278,7 @@ public class ArmySetupController implements Initializable {
           Integer.parseInt(armor2.getText()), Integer.parseInt(attack2.getText()));
       this.army2.addUnit(unit);
       this.updateObservableList2();
+      this.sizeLabelArmy2.setText(String.valueOf(army2.getSize()));
     }
 
     if (comboBox2.getText().equals("CommanderUnit")) {
@@ -275,6 +286,7 @@ public class ArmySetupController implements Initializable {
           Integer.parseInt(armor2.getText()), Integer.parseInt(attack2.getText()));
       this.army2.addUnit(unit);
       this.updateObservableList2();
+      this.sizeLabelArmy2.setText(String.valueOf(army2.getSize()));
     }
 
     if (comboBox2.getText().equals("RangedUnit")) {
@@ -282,6 +294,7 @@ public class ArmySetupController implements Initializable {
           Integer.parseInt(armor2.getText()), Integer.parseInt(attack2.getText()));
       this.army2.addUnit(unit);
       this.updateObservableList2();
+      this.sizeLabelArmy2.setText(String.valueOf(army2.getSize()));
     }
   }
 
@@ -341,6 +354,7 @@ public class ArmySetupController implements Initializable {
     } else {
       this.army.removeUnit(selectedUnit);
       this.updateObservableList();
+      this.sizeLabel.setText(String.valueOf(army.getSize()));
     }
   }
 
@@ -356,6 +370,7 @@ public class ArmySetupController implements Initializable {
     } else {
       this.army2.removeUnit(selectedUnit);
       this.updateObservableList2();
+      this.sizeLabelArmy2.setText(String.valueOf(army2.getSize()));
     }
   }
 

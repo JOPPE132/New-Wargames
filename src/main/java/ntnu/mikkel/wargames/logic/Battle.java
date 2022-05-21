@@ -1,6 +1,5 @@
 package ntnu.mikkel.wargames.logic;
 
-import java.io.IOException;
 import java.util.Random;
 import ntnu.mikkel.wargames.data.Unit;
 
@@ -40,7 +39,11 @@ public class Battle {
   public Army simulate(Army armyOne, Army armyTwo) {
 
     Army winner = null;
-      while (this.armyOne.hasUnits() && this.armyTwo.hasUnits()) {
+    //Unit randomArmyOneUnit = armyOne.getRandomunit();
+    //Unit randomArmyTwoUnit = armyTwo.getRandomunit();
+
+
+    while (this.armyOne.hasUnits() && this.armyTwo.hasUnits()) {
 
       int combatOrder = firstAttackerNumberGenerator();
       Unit randomArmyOneUnit = armyOne.getRandomunit();
@@ -65,23 +68,14 @@ public class Battle {
           armyOne.removeUnit(randomArmyOneUnit);
         }
       }
+      }
+      if (armyOne.hasUnits()) {
+        winner = armyOne;
+      }
+      if (armyTwo.hasUnits()) {
+        winner = armyTwo;
+      }
+      return winner;
     }
-    if (armyOne.hasUnits()) {
-      winner = armyOne;
-    }
-    if (armyTwo.hasUnits()) {
-      winner = armyTwo;
-    }
-    return winner;
   }
 
-  /**
-   * Start method of application.
-   *
-   * @param args arguments.
-   */
-  public static void main(String[] args) throws IOException {
-    //Battle battle = new Battle();
-    //battle.simulate();
-  }
-}

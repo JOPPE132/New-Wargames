@@ -19,8 +19,6 @@ public class MainWindow extends Application {
   private Scene howToPlayScene;
   private Scene battleScene;
   private Scene armySetupScene;
-  private Scene armyPopupScene;
-  private Scene addUnitScene;
 
   //Controllers
   private MenuController menuController;
@@ -76,7 +74,6 @@ public class MainWindow extends Application {
 
       //Setting up the Battle scenes.
       this.battleController.setArmyScene(this.armySetupScene);
-
 
       primaryStage.setTitle("Wargames");
       primaryStage.setResizable(false);
