@@ -193,6 +193,7 @@ public class ArmySetupController implements Initializable {
     updateObservableList2();
     this.sizeLabel.setText(String.valueOf(army.getSize()));
     this.sizeLabelArmy2.setText(String.valueOf(army2.getSize()));
+    battleController.clearArmy();
   }
 
   /**

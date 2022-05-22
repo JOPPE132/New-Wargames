@@ -203,4 +203,11 @@ public class BattleController implements Initializable {
     alert.setContentText("Please add units to the Armies in the Army Setup.");
     alert.show();
   }
+
+  /**
+   * Clears the observablelist.
+   */
+  public void clearArmy(){
+    this.observableList.clear();
+  }
 }
