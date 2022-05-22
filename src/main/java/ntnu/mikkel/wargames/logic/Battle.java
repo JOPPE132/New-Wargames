@@ -80,4 +80,3 @@ public class Battle {
       return winner;
     }
   }
-

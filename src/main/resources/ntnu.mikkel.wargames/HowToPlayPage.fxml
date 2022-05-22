@@ -32,7 +32,7 @@
                   <Font name="Impact" size="32.0" />
                </font>
             </MFXButton>
-            <TextArea editable="false" layoutX="113.0" layoutY="104.0" prefHeight="467.0" prefWidth="492.0" text="In order to play you need to setup two Armies for Battle. You can&#10;add Units by filling out the text-boxes and pressing the Add-&#10;Unit button. You can also remove any existing Unit by &#10;pressing the RemoveUnit button.&#10;&#10;1) Army name can be edited by filling out the text box and&#10;pressing the Set Army Name button.&#10;&#10;2) Fill out the text-boxes with desired unit name, health, attack&#10;and armor before pressing the AddUnit button.&#10;&#10;3) The units will now show in the TableView. You can also&#10;remove any unit by highlighting the Unit in the TableView, &#10;then pressing the RemoveUnit button.&#10;&#10;4) The minimum values for health, attack and armor are 0.&#10;5) The maximum values for health, attack and armor are 100.&#10;">
+            <TextArea editable="false" layoutX="113.0" layoutY="104.0" prefHeight="467.0" prefWidth="492.0" text="In order to play you need to setup two Armies for Battle. You can&#10;add Units by filling out the text-boxes and pressing the Add-&#10;Unit button. You can also remove any existing Unit by &#10;pressing the RemoveUnit button.&#10;&#10;1) Army name can be edited by filling out the text box and&#10;pressing the Set Army Name button.&#10;&#10;2) Fill out the text-boxes with desired unit name, health, attack&#10;and armor before pressing the AddUnit button.&#10;&#10;3) The units will now show in the TableView. You can also&#10;remove any unit by highlighting the Unit in the TableView, &#10;then pressing the RemoveUnit button.&#10;&#10;4) The minimum values for health, attack and armor are 1.&#10;5) The maximum values for health, attack and armor are 99.&#10;">
                <font>
                   <Font size="16.0" />
                </font>
@@ -48,7 +48,7 @@
                   <Font size="34.0" />
                </font>
             </Label>
-            <TextArea editable="false" layoutX="113.0" layoutY="105.0" prefHeight="467.0" prefWidth="492.0" text="When you have prepared the two Armies, you are now able to &#10;simulate a Battle! The Battle ">
+            <TextArea editable="false" layoutX="113.0" layoutY="105.0" prefHeight="467.0" prefWidth="492.0" text="When you have prepared the two Armies, you are now able to &#10;simulate a Battle! The Battle can be simulated by pressing the&#10;Simulate button.&#10;&#10;In the tableview beneath the Battle winner label you will find&#10;the health on the remaining units of the winning army. ">
                <font>
                   <Font size="16.0" />
                </font>

@@ -20,6 +20,9 @@ import javafx.stage.Stage;
 import ntnu.mikkel.wargames.data.Unit;
 import ntnu.mikkel.wargames.logic.Army;
 
+/**
+ * Class represents a controller for BattlePage.FXML
+ */
 public class BattleController implements Initializable {
 
   @FXML
@@ -83,6 +86,9 @@ public class BattleController implements Initializable {
    * @return returns winner of the two Armies.
    */
   private Army simulate(Army armyOne, Army armyTwo) {
+    if (armyOne.getArrayList().isEmpty() && armyTwo.getArrayList().isEmpty()) {
+      invalidBattleAlert();
+    }
     Army winner = null;
 
     while (armyOne.hasUnits() && armyTwo.hasUnits()) {
@@ -188,5 +194,13 @@ public class BattleController implements Initializable {
    */
   public void recieveControllers(ArmySetupController armySetupController) {
     this.armySetupController = armySetupController;
+  }
+
+  private void invalidBattleAlert(){
+    Alert alert = new Alert(Alert.AlertType.ERROR);
+    alert.setHeaderText("Simulation can not be done with empty armies.");
+    alert.setTitle("Error");
+    alert.setContentText("Please add units to the Armies in the Army Setup.");
+    alert.show();
   }
 }

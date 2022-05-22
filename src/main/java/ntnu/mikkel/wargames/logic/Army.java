@@ -3,6 +3,7 @@ package ntnu.mikkel.wargames.logic;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Objects;
 import java.util.Random;
 import java.util.stream.Collectors;
 import ntnu.mikkel.wargames.data.Unit;
@@ -29,6 +30,11 @@ public class Army {
     this.units = new ArrayList<>();
   }
 
+  /**
+   * Returns arraylist of Army.
+   *
+   * @return returns arraylist of Army.
+   */
   public List<Unit> getArrayList() {
     return this.units;
   }
@@ -58,19 +64,19 @@ public class Army {
   /**
    * Method adds all units from a collection of units, to an Army.
    *
-   * @param listUnits the name of the collection you wish to add to an army.
+   * @param newUnits the name of the collection you wish to add to an army.
    */
-  public void addAll(List<Unit> listUnits) {
-    if (listUnits.isEmpty()) {
+  public void addAll(List<Unit> newUnits) {
+    if (newUnits.isEmpty()) {
       System.out.println("There is nothing to be added.");
     }
     int index = 0;
 
-    Iterator<Unit> it = listUnits.iterator();
+    Iterator<Unit> it = newUnits.iterator();
 
     while (it.hasNext()) {
 
-      if (index >= 0 && index < listUnits.size()) {
+      if (index >= 0 && index < newUnits.size()) {
         Unit unit = it.next();
         this.units.add(unit);
       }
@@ -110,7 +116,7 @@ public class Army {
    *
    * @return the size of an Army.
    */
-  public int getSize(){
+  public int getSize() {
     return units.size();
   }
 
@@ -150,6 +156,35 @@ public class Army {
         .collect(Collectors.toList());
 
     return infantryUnits;
+  }
+
+  /**
+   * Method compares two objects.
+   *
+   * @param o the object to compare.
+   * @return true or false whether the objects are equal or not.
+   * True if equal, false otherwise.
+   */
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) {
+      return true;
+    }
+    if (o == null || getClass() != o.getClass()) {
+      return false;
+    }
+    Army army = (Army) o;
+    return name.equals(army.name) && units.equals(army.units);
+  }
+
+  /**
+   * Returns the hashcode of the object.
+   *
+   * @return returns the hashcode of the object.
+   */
+  @Override
+  public int hashCode() {
+    return Objects.hash(name, units);
   }
 
   /**

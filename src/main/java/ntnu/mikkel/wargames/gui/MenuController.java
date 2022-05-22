@@ -12,6 +12,9 @@ import javafx.scene.control.ButtonType;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
+/**
+ * Class represents a controller for HomePage.FXML
+ */
 public class MenuController implements Initializable {
 
   //Scenes
@@ -94,11 +97,11 @@ public class MenuController implements Initializable {
    * within the controller.
    *
    * @param armySetupController controllerobject.
+   * @param howToPlayController controllerobject.
    */
   public void recieveControllers(HowToPlayController howToPlayController,
                                  ArmySetupController armySetupController) {
     this.armySetupController = armySetupController;
     this.howToPlayController = howToPlayController;
   }
-
 }

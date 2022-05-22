@@ -5,6 +5,9 @@ package ntnu.mikkel.wargames.data;
  */
 public class UnitType {
 
+  /**
+   * Enum
+   */
   public enum Type {
     INFANTRY, RANGEDUNIT, COMMANDERUNIT, CAVALRYUNIT
   }
