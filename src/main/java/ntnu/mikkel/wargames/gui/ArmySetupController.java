@@ -2,7 +2,6 @@ package ntnu.mikkel.wargames.gui;
 
 import io.github.palexdev.materialfx.controls.MFXComboBox;
 import io.github.palexdev.materialfx.controls.MFXTextField;
-import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
@@ -33,11 +32,7 @@ import ntnu.mikkel.wargames.logic.Army;
  */
 public class ArmySetupController implements Initializable {
 
-  //FXML ELEMENTS
-  @FXML
-  private Label armyOneLabel1 = new Label();
-  @FXML
-  private Label armyTwoLabel1 = new Label();
+  //FXML ELEMENTS IN SCENE
   @FXML
   private MFXTextField armyName1 = new MFXTextField();
   @FXML
@@ -66,8 +61,12 @@ public class ArmySetupController implements Initializable {
   private Label sizeLabel = new Label();
   @FXML
   private Label sizeLabelArmy2 = new Label();
+  @FXML
+  Label armyOneLabel1 = new Label();
+  @FXML
+  Label armyTwoLabel1 = new Label();
 
-  //TableView Army 1
+  //TableView ARMY 1
   @FXML
   TableView<Unit> tableView;
   @FXML
@@ -81,7 +80,7 @@ public class ArmySetupController implements Initializable {
   @FXML
   TableColumn<Unit, String> unitTypeColumn;
 
-  //TableView Army 2
+  //TableView ARMY 2
   @FXML
   TableView<Unit> tableView2;
   @FXML
@@ -94,6 +93,10 @@ public class ArmySetupController implements Initializable {
   TableColumn<Unit, Integer> armorColumn2;
   @FXML
   TableColumn<Unit, Integer> unitTypeColumn2;
+
+  //Controllers
+  private BattleController battleController;
+  private MenuController menuController;
 
   //Scenes
   private Scene homeScene;
@@ -141,33 +144,29 @@ public class ArmySetupController implements Initializable {
    */
   @Override
   public void initialize(URL url, ResourceBundle resourceBundle) {
-    try {
-      this.army = new Army("Army1");
-      this.army2 = new Army("Army2");
+    //Create the Armies.
+    this.army = new Army("Army1");
+    this.army2 = new Army("Army2");
 
-      //TableView ARMY1
-      this.comboBox.getItems().addAll("InfantryUnit", "CavalryUnit", "RangedUnit", "CommanderUnit");
-      this.nameColumn.setCellValueFactory(new PropertyValueFactory<>("Name"));
-      this.healthColumn.setCellValueFactory(new PropertyValueFactory<>("Health"));
-      this.attackColumn.setCellValueFactory(new PropertyValueFactory<>("Attack"));
-      this.armorColumn.setCellValueFactory(new PropertyValueFactory<>("Armor"));
-      this.tableView.getColumns().addAll(nameColumn, healthColumn, attackColumn, armorColumn);
-      this.observableList = FXCollections.observableArrayList(this.army.getArrayList());
-      this.tableView.setItems(this.observableList);
+    //TableView ARMY1
+    this.comboBox.getItems().addAll("InfantryUnit", "CavalryUnit", "RangedUnit", "CommanderUnit");
+    this.nameColumn.setCellValueFactory(new PropertyValueFactory<>("Name"));
+    this.healthColumn.setCellValueFactory(new PropertyValueFactory<>("Health"));
+    this.attackColumn.setCellValueFactory(new PropertyValueFactory<>("Attack"));
+    this.armorColumn.setCellValueFactory(new PropertyValueFactory<>("Armor"));
+    this.tableView.getColumns().addAll(nameColumn, healthColumn, attackColumn, armorColumn);
+    this.observableList = FXCollections.observableArrayList(this.army.getArrayList());
+    this.tableView.setItems(this.observableList);
 
-      //TableView ARMY2
-      this.comboBox2.getItems().addAll("InfantryUnit", "CavalryUnit", "RangedUnit", "CommanderUnit");
-      this.nameColumn2.setCellValueFactory(new PropertyValueFactory<>("Name"));
-      this.healthColumn2.setCellValueFactory(new PropertyValueFactory<>("Health"));
-      this.attackColumn2.setCellValueFactory(new PropertyValueFactory<>("Attack"));
-      this.armorColumn2.setCellValueFactory(new PropertyValueFactory<>("Armor"));
-      this.tableView2.getColumns().addAll(nameColumn2, healthColumn2, attackColumn2, armorColumn2);
-      this.observableList2 = FXCollections.observableArrayList(this.army2.getArrayList());
-      this.tableView2.setItems(this.observableList2);
-
-    } catch (IOException e) {
-      e.printStackTrace();
-    }
+    //TableView ARMY2
+    this.comboBox2.getItems().addAll("InfantryUnit", "CavalryUnit", "RangedUnit", "CommanderUnit");
+    this.nameColumn2.setCellValueFactory(new PropertyValueFactory<>("Name"));
+    this.healthColumn2.setCellValueFactory(new PropertyValueFactory<>("Health"));
+    this.attackColumn2.setCellValueFactory(new PropertyValueFactory<>("Attack"));
+    this.armorColumn2.setCellValueFactory(new PropertyValueFactory<>("Armor"));
+    this.tableView2.getColumns().addAll(nameColumn2, healthColumn2, attackColumn2, armorColumn2);
+    this.observableList2 = FXCollections.observableArrayList(this.army2.getArrayList());
+    this.tableView2.setItems(this.observableList2);
   }
 
   /**
@@ -182,14 +181,18 @@ public class ArmySetupController implements Initializable {
   }
 
   /**
-   * Changes scene to ArmySetupPage.FXML
+   * Resets the Armies by clearing their ArrayList of elements. Updates
+   * ObservableList used in TableView. Updates Armies size.
    *
-   * @param mouseEvent onMouseClicked button.
+   * @param mouseEvent on mouseClicked button.
    */
-  @FXML
-  protected void prepareArmiesButtonPressed(MouseEvent mouseEvent) {
-    Stage primaryStage = (Stage) ((Node) mouseEvent.getSource()).getScene().getWindow();
-    this.setScene(primaryStage, this.armyScene);
+  public void resetArmiesButtonPressed(MouseEvent mouseEvent) {
+    this.army.getArrayList().clear();
+    this.army2.getArrayList().clear();
+    updateObservableList();
+    updateObservableList2();
+    this.sizeLabel.setText(String.valueOf(army.getSize()));
+    this.sizeLabelArmy2.setText(String.valueOf(army2.getSize()));
   }
 
   /**
@@ -207,7 +210,7 @@ public class ArmySetupController implements Initializable {
    * Changes Scene on Stage.
    *
    * @param primaryStage the stage you want the scene to change on.
-   * @param newScene the scene you want the stage to change on.
+   * @param newScene     the scene you want the stage to change on.
    */
   private void setScene(Stage primaryStage, Scene newScene) {
     primaryStage.hide();
@@ -216,85 +219,92 @@ public class ArmySetupController implements Initializable {
   }
 
   /**
-   * Adds a new Unit to the TableView. Requires that all
-   * textfields are filled out.
+   * Adds a new Unit to the TableView 2. Exception are thrown if values are
+   * >0 and <100, empty or Strings.
    *
    * @param mouseEvent onMouseClicked button.
    */
   @FXML
   public void addUnitButtonPressed(MouseEvent mouseEvent) {
-    if (comboBox.getText().equals("InfantryUnit")) {
-      Unit unit = new InfantryUnit(unitName1.getText(), Integer.parseInt(health1.getText()),
-          Integer.parseInt(armor1.getText()), Integer.parseInt(attack1.getText()));
-      this.army.addUnit(unit);
-      this.updateObservableList();
-      this.sizeLabel.setText(String.valueOf(army.getSize()));
-    }
+    try {
+      if (comboBox.getText().equals("InfantryUnit")) { //If unit in combobox is InfantryUnit.
+        Unit unit = new InfantryUnit(unitName1.getText(), Integer.parseInt(health1.getText()),
+            Integer.parseInt(armor1.getText()), Integer.parseInt(attack1.getText()));
+        this.army.addUnit(unit);
+        this.updateObservableList();
+        this.sizeLabel.setText(String.valueOf(army.getSize()));
+      }
 
+      if (comboBox.getText().equals("CavalryUnit")) { //If unit in combobox is CavalryUnit.
+        Unit unit = new CavalryUnit(unitName1.getText(), Integer.parseInt(health1.getText()),
+            Integer.parseInt(armor1.getText()), Integer.parseInt(attack1.getText()));
+        this.army.addUnit(unit);
+        this.updateObservableList();
+        this.sizeLabel.setText(String.valueOf(army.getSize()));
+      }
 
-    if (comboBox.getText().equals("CavalryUnit")) {
-      Unit unit = new CavalryUnit(unitName1.getText(), Integer.parseInt(health1.getText()),
-          Integer.parseInt(armor1.getText()), Integer.parseInt(attack1.getText()));
-      this.army.addUnit(unit);
-      this.updateObservableList();
-      this.sizeLabel.setText(String.valueOf(army.getSize()));
-    }
+      if (comboBox.getText().equals("CommanderUnit")) { //If unit in combobox is CommanderUnit.
+        Unit unit = new CommanderUnit(unitName1.getText(), Integer.parseInt(health1.getText()),
+            Integer.parseInt(armor1.getText()), Integer.parseInt(attack1.getText()));
+        this.army.addUnit(unit);
+        this.updateObservableList();
+        this.sizeLabel.setText(String.valueOf(army.getSize()));
+      }
 
-    if (comboBox.getText().equals("CommanderUnit")) {
-      Unit unit = new CommanderUnit(unitName1.getText(), Integer.parseInt(health1.getText()),
-          Integer.parseInt(armor1.getText()), Integer.parseInt(attack1.getText()));
-      this.army.addUnit(unit);
-      this.updateObservableList();
-      this.sizeLabel.setText(String.valueOf(army.getSize()));
-    }
-
-    if (comboBox.getText().equals("RangedUnit")) {
-      Unit unit = new RangedUnit(unitName1.getText(), Integer.parseInt(health1.getText()),
-          Integer.parseInt(armor1.getText()), Integer.parseInt(attack1.getText()));
-      this.army.addUnit(unit);
-      this.updateObservableList();
-      this.sizeLabel.setText(String.valueOf(army.getSize()));
+      if (comboBox.getText().equals("RangedUnit")) { //If unit in combobox is RangedUnit.
+        Unit unit = new RangedUnit(unitName1.getText(), Integer.parseInt(health1.getText()),
+            Integer.parseInt(armor1.getText()), Integer.parseInt(attack1.getText()));
+        this.army.addUnit(unit);
+        this.updateObservableList();
+        this.sizeLabel.setText(String.valueOf(army.getSize()));
+      }
+    } catch (IllegalArgumentException illegalArgumentException) {
+      missingFieldsAlert(); //Throw alert.
     }
   }
 
   /**
-   * Adds a new Unit to the TableView. Requires that all
-   * textfields are filled out.
+   * Adds a new Unit to the TableView 2. Exception are thrown if values are
+   * >0 and <100, empty or Strings.
    *
    * @param mouseEvent onMouseClicked button.
    */
   @FXML
   public void addUnitButton2Pressed(MouseEvent mouseEvent) {
-    if (comboBox2.getText().equals("InfantryUnit")) {
-      Unit unit = new InfantryUnit(unitName2.getText(), Integer.parseInt(health2.getText()),
-          Integer.parseInt(armor2.getText()), Integer.parseInt(attack2.getText()));
-      this.army2.addUnit(unit);
-      this.updateObservableList2();
-      this.sizeLabelArmy2.setText(String.valueOf(army2.getSize()));
-    }
+    try {
+      if (comboBox2.getText().equals("InfantryUnit")) { //If unit in combobox is InfantryUnit.
+        Unit unit = new InfantryUnit(unitName2.getText(), Integer.parseInt(health2.getText()),
+            Integer.parseInt(armor2.getText()), Integer.parseInt(attack2.getText()));
+        this.army2.addUnit(unit);
+        this.updateObservableList2();
+        this.sizeLabelArmy2.setText(String.valueOf(army2.getSize()));
+      }
 
-    if (comboBox2.getText().equals("CavalryUnit")) {
-      Unit unit = new CavalryUnit(unitName2.getText(), Integer.parseInt(health2.getText()),
-          Integer.parseInt(armor2.getText()), Integer.parseInt(attack2.getText()));
-      this.army2.addUnit(unit);
-      this.updateObservableList2();
-      this.sizeLabelArmy2.setText(String.valueOf(army2.getSize()));
-    }
+      if (comboBox2.getText().equals("CavalryUnit")) { //If unit in combobox is CavalryUnit.
+        Unit unit = new CavalryUnit(unitName2.getText(), Integer.parseInt(health2.getText()),
+            Integer.parseInt(armor2.getText()), Integer.parseInt(attack2.getText()));
+        this.army2.addUnit(unit);
+        this.updateObservableList2();
+        this.sizeLabelArmy2.setText(String.valueOf(army2.getSize()));
+      }
 
-    if (comboBox2.getText().equals("CommanderUnit")) {
-      Unit unit = new CommanderUnit(unitName2.getText(), Integer.parseInt(health2.getText()),
-          Integer.parseInt(armor2.getText()), Integer.parseInt(attack2.getText()));
-      this.army2.addUnit(unit);
-      this.updateObservableList2();
-      this.sizeLabelArmy2.setText(String.valueOf(army2.getSize()));
-    }
+      if (comboBox2.getText().equals("CommanderUnit")) { //If unit in combobox is CommanderUnit.
+        Unit unit = new CommanderUnit(unitName2.getText(), Integer.parseInt(health2.getText()),
+            Integer.parseInt(armor2.getText()), Integer.parseInt(attack2.getText()));
+        this.army2.addUnit(unit);
+        this.updateObservableList2();
+        this.sizeLabelArmy2.setText(String.valueOf(army2.getSize()));
+      }
 
-    if (comboBox2.getText().equals("RangedUnit")) {
-      Unit unit = new RangedUnit(unitName2.getText(), Integer.parseInt(health2.getText()),
-          Integer.parseInt(armor2.getText()), Integer.parseInt(attack2.getText()));
-      this.army2.addUnit(unit);
-      this.updateObservableList2();
-      this.sizeLabelArmy2.setText(String.valueOf(army2.getSize()));
+      if (comboBox2.getText().equals("RangedUnit")) { //If unit in combobox is RangedUnit.
+        Unit unit = new RangedUnit(unitName2.getText(), Integer.parseInt(health2.getText()),
+            Integer.parseInt(armor2.getText()), Integer.parseInt(attack2.getText()));
+        this.army2.addUnit(unit);
+        this.updateObservableList2();
+        this.sizeLabelArmy2.setText(String.valueOf(army2.getSize()));
+      }
+    } catch (IllegalArgumentException illegalArgumentException) {
+      missingFieldsAlert();
     }
   }
 
@@ -359,7 +369,7 @@ public class ArmySetupController implements Initializable {
   }
 
   /**
-   * Removes an exisiting Unit from the tableView and Army2.
+   * Removes an existing Unit from the tableView and Army2.
    *
    * @param mouseEvent onMouseClicked button.
    */
@@ -374,12 +384,44 @@ public class ArmySetupController implements Initializable {
     }
   }
 
-  public Army getArmy(){
+  /**
+   * Returns Army 1.
+   *
+   * @return returns Army 1.
+   */
+  public Army getArmy() {
     return army;
   }
 
-  public Army getArmy2(){
+  /**
+   * Returns Army 2.
+   *
+   * @return returns Army 2.
+   */
+  public Army getArmy2() {
     return army2;
   }
 
+  /**
+   * Receive controllers.
+   *
+   * @param battleController
+   * @param menuController
+   */
+  public void receiveControllers(BattleController battleController, MenuController menuController) {
+    this.battleController = battleController;
+    this.menuController = menuController;
+  }
+
+  /**
+   * Alert for missing fields or wrong values in adding units.
+   */
+  private void missingFieldsAlert() {
+    Alert alert = new Alert(Alert.AlertType.ERROR);
+    alert.setTitle("Error");
+    alert.setContentText("Please fill out the missing fields or change the values.");
+    alert.setHeaderText(
+        "Remember minimum value is 1 and maximum value is 99. Otherwise, fill out the empty textfields.");
+    alert.show();
+  }
 }

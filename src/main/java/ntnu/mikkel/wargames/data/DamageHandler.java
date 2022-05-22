@@ -33,11 +33,10 @@ public class DamageHandler {
    * If randomNumber() rolls 13 or 14, damage is increased by 2.
    * If randomNumber() rolls 15, damage is increased by 3.
    *
-   *
    * @param unit the Unit you wish to attack.
    */
   public void reduceHealth(Unit unit) {
-    int randomNumber = getRandomNumber();
+    int randomNumber = getRandomNumber(); //Get a random number
 
     if (0 <= randomNumber && randomNumber <= 10) { //Normal damage
       int newHealth = unit.getHealth() -

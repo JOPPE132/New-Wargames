@@ -26,18 +26,34 @@ public class MenuController implements Initializable {
   public void initialize(URL url, ResourceBundle resourceBundle) {
   }
 
+  /**
+   * Changes Scene on Stage.
+   *
+   * @param primaryStage the stage you want the scene to change on.
+   * @param newScene     the scene you want the stage to change on.
+   */
   public void setScene(Stage primaryStage, Scene newScene) {
     primaryStage.hide();
     primaryStage.setScene(newScene);
     primaryStage.show();
   }
 
+  /**
+   * Changes scene to HowToPlayScene.
+   *
+   * @param howToPlayScene the new Scene.
+   */
   public void setHowToPlayScene(Scene howToPlayScene) {
     this.newHowToPlayScene = howToPlayScene;
   }
 
-  public void setArmySetupScene(Scene armySetupScene) {
-    this.armySetupScene = armySetupScene;
+  /**
+   * Changes scene to ArmyScene.
+   *
+   * @param armyScene the new Scene.
+   */
+  public void setArmySetupScene(Scene armyScene) {
+    this.armySetupScene = armyScene;
   }
 
   @FXML
@@ -46,12 +62,22 @@ public class MenuController implements Initializable {
     this.setScene(primaryStage, this.newHowToPlayScene);
   }
 
+  /**
+   * Changes the Scene back to Army scene.
+   *
+   * @param mouseEvent on mousedClicked button.
+   */
   @FXML
   protected void PlayClick(MouseEvent mouseEvent) {
     Stage primaryStage = (Stage) ((Node) mouseEvent.getSource()).getScene().getWindow();
     this.setScene(primaryStage, this.armySetupScene);
   }
 
+  /**
+   * Exits application with confirmation alert.
+   *
+   * @param event
+   */
   @FXML
   public void ExitButtonPressed(ActionEvent event) {
     Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
@@ -63,9 +89,16 @@ public class MenuController implements Initializable {
     }
   }
 
-  public void recieveControllers(ArmySetupController armySetupController,
-                                 HowToPlayController howToPlayController) {
+  /**
+   * Receieve controller-objects from MainWindow. Including objects made
+   * within the controller.
+   *
+   * @param armySetupController controllerobject.
+   */
+  public void recieveControllers(HowToPlayController howToPlayController,
+                                 ArmySetupController armySetupController) {
     this.armySetupController = armySetupController;
     this.howToPlayController = howToPlayController;
   }
+
 }

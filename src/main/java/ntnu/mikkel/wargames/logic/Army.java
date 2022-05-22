@@ -1,6 +1,5 @@
 package ntnu.mikkel.wargames.logic;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -16,8 +15,13 @@ public class Army {
   private String name;
   private final ArrayList<Unit> units;
 
-
-  public Army(String name) throws IOException {
+  /**
+   * Creates an object of Army.
+   *
+   * @param name the name of the army.
+   * @throws IllegalArgumentException illegal argument in Army.
+   */
+  public Army(String name) throws IllegalArgumentException {
     if (name == null || name.isBlank()) {
       throw new IllegalArgumentException("Name can not be null.");
     }
@@ -74,10 +78,14 @@ public class Army {
     }
   }
 
-  public void setName(String name) {
-    this.name = name;
+  /**
+   * Sets a new name to the Army.
+   *
+   * @param newName the new name of the Army.
+   */
+  public void setName(String newName) {
+    this.name = newName;
   }
-
 
   /**
    * Method removes a unit from an army.
@@ -144,6 +152,11 @@ public class Army {
     return infantryUnits;
   }
 
+  /**
+   * Method returns a list of units containing only RangedUnits.
+   *
+   * @return returns a list of units only containing RangedUnits.
+   */
   public List<Unit> getRangedUnits() {
     List<Unit> rangedUnits = new ArrayList();
     rangedUnits = this.units.stream().filter(rangedUnit -> rangedUnit.getName().equals("Ranged"))
@@ -152,6 +165,11 @@ public class Army {
     return rangedUnits;
   }
 
+  /**
+   * Method returns a list of units containing only CavalryUnits.
+   *
+   * @return returns a list of units only containing CavalryUnits.
+   */
   public List<Unit> getCavalryUnits() {
     List<Unit> cavalryUnits = new ArrayList();
     cavalryUnits = this.units.stream().filter(rangedUnit -> rangedUnit.getName().equals("Cavalry"))
@@ -160,6 +178,11 @@ public class Army {
     return cavalryUnits;
   }
 
+  /**
+   * Method returns a list of units containing only CmmanderUnits.
+   *
+   * @return returns a list of units only containing CommanderUnits.
+   */
   public List<Unit> getCommanderUnits() {
     List<Unit> commanderUnits = new ArrayList();
     commanderUnits =

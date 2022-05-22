@@ -1,7 +1,6 @@
 package ntnu.mikkel.wargames.data;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.junit.jupiter.api.Test;
@@ -22,41 +21,41 @@ public class CavalryUnitTest {
     CavalryUnit cavalryUnit = new CavalryUnit("Name", 50, 10, 15);
 
     assertEquals("Name", cavalryUnit.getName());
-    //assertEquals(15, cavalryUnit.getArmor());
-    //assertEquals(10, cavalryUnit.getAttack());
+    assertEquals(15, cavalryUnit.getArmor());
+    assertEquals(10, cavalryUnit.getAttack());
     assertEquals(50, cavalryUnit.getHealth());
   }
 
   @Test
   void testConstructorAgain(){
-    CavalryUnit cavalryUnit = new CavalryUnit("", 5000, 5000, 5000);
+    CavalryUnit cavalryUnit = new CavalryUnit("Unit", 50, 10, 20);
 
-    //assertEquals("Unit", cavalryUnit.getName());
-    //assertEquals(50, cavalryUnit.getHealth());
-    //assertEquals(10, cavalryUnit.getAttack());
-    //assertEquals(20, cavalryUnit.getArmor());
+    assertEquals("Unit", cavalryUnit.getName());
+    assertEquals(50, cavalryUnit.getHealth());
+    assertEquals(10, cavalryUnit.getAttack());
+    assertEquals(20, cavalryUnit.getArmor());
   }
 
   @Test
   void testConstructorWithFewerParameters() {
-    CavalryUnit cavalryUnit = new CavalryUnit("Name", 100, 1, 1);
+    CavalryUnit cavalryUnit = new CavalryUnit("Name", 50);
 
-    assertEquals(1, cavalryUnit.getArmor());
-    assertFalse(cavalryUnit.isDead());
+    assertEquals(12, cavalryUnit.getArmor());
+    assertTrue(cavalryUnit.isAlive());
     assertEquals("Name", cavalryUnit.getName());
-    assertEquals(1, cavalryUnit.getAttack());
+    assertEquals(20, cavalryUnit.getAttack());
   }
 
   @Test
   void testGetAttackBonus() {
-    CavalryUnit cavalryUnit = new CavalryUnit("Name", 1, 1, 1);
+    CavalryUnit cavalryUnit = new CavalryUnit("Name", 10);
 
     assertEquals(2, cavalryUnit.getAttackBonus());
   }
 
   @Test
   void testGetResistBonus() {
-    CavalryUnit cavalryUnit = new CavalryUnit("Name", 1, 1, 1);
+    CavalryUnit cavalryUnit = new CavalryUnit("Name", 10);
 
     assertEquals(1, cavalryUnit.getResistBonus());
   }

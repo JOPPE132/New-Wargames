@@ -60,9 +60,7 @@ public class ArmyHandler {
 
     while (scanner.hasNextLine()) {
 
-
     }
-
 
     //line.split(","); //Splitter mellom komma
 
@@ -107,16 +105,3 @@ public class ArmyHandler {
     fileWriter.close();
   }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-

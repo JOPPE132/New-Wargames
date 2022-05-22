@@ -12,6 +12,7 @@ import javafx.stage.Stage;
 public class HowToPlayController implements Initializable {
 
   private Scene homeScene;
+  private MenuController menuController;
 
   public void setHomeScene(Scene homeScene) {
     this.homeScene = homeScene;
@@ -33,5 +34,9 @@ public class HowToPlayController implements Initializable {
   @Override
   public void initialize(URL url, ResourceBundle resourceBundle) {
 
+  }
+
+  public void recieveControllers(MenuController menuController) {
+    this.menuController = menuController;
   }
 }

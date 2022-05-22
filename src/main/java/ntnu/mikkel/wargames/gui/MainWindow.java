@@ -1,12 +1,9 @@
 package ntnu.mikkel.wargames.gui;
 
 import javafx.application.Application;
-import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
-import javafx.scene.control.ButtonType;
 import javafx.stage.Stage;
 
 /**
@@ -26,7 +23,12 @@ public class MainWindow extends Application {
   private HowToPlayController howToPlayController;
   private BattleController battleController;
 
-  //@SuppressWarnings("unchecked")
+  /**
+   * Main start method of application.
+   *
+   * @param primaryStage the first stage.
+   * @throws Exception
+   */
   @Override
   public void start(Stage primaryStage) throws Exception {
     try {
@@ -35,7 +37,6 @@ public class MainWindow extends Application {
           new FXMLLoader(getClass().getResource("/ntnu.mikkel.wargames/HomePage.fxml"));
       Parent homePagePane = homePageLoader.load();
       this.menuScene = new Scene(homePagePane, 1440, 850);
-
 
       //Getting loader and a pane for ArmySetup scene.
       FXMLLoader armySetupLoader =
@@ -50,7 +51,6 @@ public class MainWindow extends Application {
       Parent howToPlayPagePane = howToPlayPageLoader.load();
       this.howToPlayScene = new Scene(howToPlayPagePane, 1440, 850);
       howToPlayController = howToPlayPageLoader.getController();
-
 
       //Loader for BattlePage.FXML
       FXMLLoader battleLoader =
@@ -75,6 +75,13 @@ public class MainWindow extends Application {
       //Setting up the Battle scenes.
       this.battleController.setArmyScene(this.armySetupScene);
 
+      //Recieve controllers
+      this.armySetupController.receiveControllers(this.battleController, this.menuController);
+      this.battleController.recieveControllers(this.armySetupController);
+      this.menuController.recieveControllers(this.howToPlayController, this.armySetupController);
+      this.howToPlayController.recieveControllers(this.menuController);
+
+      //Set first scene.
       primaryStage.setTitle("Wargames");
       primaryStage.setResizable(false);
       primaryStage.setScene(this.menuScene);
@@ -84,18 +91,11 @@ public class MainWindow extends Application {
     }
   }
 
-  @FXML
-  private void exitApplication(Stage stage) {
-    Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-    alert.setTitle("Exit");
-    alert.setHeaderText("You are about to exit Wargames.");
-    alert.setContentText("Are you sure you want to exit?");
-
-    if (alert.showAndWait().get() == ButtonType.OK) {
-      stage.close();
-    }
-  }
-
+  /**
+   * Alternative start method for application,
+   *
+   * @param args string of arguments.
+   */
   public static void main(String[] args) {
     launch(args);
   }

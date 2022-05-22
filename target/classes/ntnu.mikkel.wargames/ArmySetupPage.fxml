@@ -111,7 +111,7 @@
                   <Font name="Impact" size="32.0" />
                </font>
             </MFXButton>
-            <MFXButton buttonType="RAISED" layoutX="499.0" onMouseClicked="#prepareArmiesButtonPressed" prefHeight="109.0" prefWidth="426.0" style="-fx-background-color: #414673;" text="Prepare Armies" textFill="WHITE">
+            <MFXButton buttonType="RAISED" layoutX="499.0" onMouseClicked="#resetArmiesButtonPressed" prefHeight="109.0" prefWidth="426.0" style="-fx-background-color: #414673;" text="Reset Armies" textFill="WHITE">
                <font>
                   <Font size="32.0" />
                </font>

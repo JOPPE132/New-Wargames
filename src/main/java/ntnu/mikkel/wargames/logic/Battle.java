@@ -3,6 +3,10 @@ package ntnu.mikkel.wargames.logic;
 import java.util.Random;
 import ntnu.mikkel.wargames.data.Unit;
 
+/**
+ * Represents a battle between two Armies. The Armies are passed through battles constructor,
+ * and assigned as a field. The Armies in the fields are used for Simulate method.
+ */
 public class Battle {
 
   private Army armyOne;
@@ -39,8 +43,6 @@ public class Battle {
   public Army simulate(Army armyOne, Army armyTwo) {
 
     Army winner = null;
-    //Unit randomArmyOneUnit = armyOne.getRandomunit();
-    //Unit randomArmyTwoUnit = armyTwo.getRandomunit();
 
 
     while (this.armyOne.hasUnits() && this.armyTwo.hasUnits()) {

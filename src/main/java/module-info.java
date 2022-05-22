@@ -15,7 +15,7 @@ module ntnu.mikkel.wargames {
     opens ntnu.mikkel.wargames to javafx.fxml;
   exports ntnu.mikkel.wargames.data;
   exports ntnu.mikkel.wargames.gui;
-
+  exports ntnu.mikkel.wargames.logic;
 
 
 

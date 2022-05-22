@@ -2,3 +2,4 @@ module:ntnu.mikkel.wargames
 ntnu.mikkel.wargames
 ntnu.mikkel.wargames.data
 ntnu.mikkel.wargames.gui
+ntnu.mikkel.wargames.logic

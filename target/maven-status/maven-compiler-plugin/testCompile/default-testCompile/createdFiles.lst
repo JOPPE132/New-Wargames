@@ -1,7 +1,7 @@
 ntnu\mikkel\wargames\data\InfantryUnitTest.class
 ntnu\mikkel\wargames\data\DamageHandlerTest.class
-ntnu\mikkel\wargames\data\DummyUnit.class
 ntnu\mikkel\wargames\data\UnitTest.class
+ntnu\mikkel\wargames\data\ArmyTest.class
 ntnu\mikkel\wargames\data\CavalryUnitTest.class
 ntnu\mikkel\wargames\data\CommanderUnitTest.class
 ntnu\mikkel\wargames\data\RangedUnitTest.class

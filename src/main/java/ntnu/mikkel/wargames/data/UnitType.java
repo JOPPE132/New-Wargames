@@ -8,6 +8,5 @@ public class UnitType {
   public enum Type {
     INFANTRY, RANGEDUNIT, COMMANDERUNIT, CAVALRYUNIT
   }
-
 }
 
