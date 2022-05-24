@@ -3,6 +3,7 @@ Start: 28.03.22
 
 FORSLAG TIL SÆRPREG::
 CRITIAL STRIKE? 25% sjangse for dobbel skade.
+----
 
 
 29.03
@@ -28,7 +29,7 @@ brukeren er klar over det.
 
 Burde lage en egen klasse som håndterer armeene. I stedet for å skape Unit objektene i Battle eller Army metoden,
 skal vi kunne bare lese inn fra en fil om alle typene av unit. Denne klassen heter nå "ArmyHandler". Her skal vi
-kunne lese og skrive til fil. Dette bevarer høy cohesion(ansvar) og loose coupling(kobling) mellom klassene.
+kunne lese og skrive til fil. Dette bevarer høy cohesion og loose coupling mellom klassene.
 
 06.04
 Jobber med skriving til/og henting fra fil. Mange muligheter her. Mange klasser man kan ta i bruk

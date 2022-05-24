@@ -315,7 +315,7 @@ public class ArmySetupController implements Initializable {
    * @param mouseEvent onMouseClicked.
    */
   public void setArmyName(MouseEvent mouseEvent) {
-    if (armyName1.getText().isBlank()) {
+    if (armyName1.getText().isBlank() || armyName1.getText().equals("null")){
       missingFieldsAlert();
     } else {
       armyOneLabel1.setText(armyName1.getText());
@@ -329,7 +329,7 @@ public class ArmySetupController implements Initializable {
    * @param mouseEvent
    */
   public void setArmy2Name(MouseEvent mouseEvent) {
-    if (armyName2.getText().isBlank()) {
+    if (armyName2.getText().isBlank() || armyName1.getText().equals("null")) {
       missingFieldsAlert();
     } else {
       armyTwoLabel1.setText(armyName2.getText());

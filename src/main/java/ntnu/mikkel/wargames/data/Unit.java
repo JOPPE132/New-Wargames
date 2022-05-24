@@ -27,7 +27,7 @@ public class Unit {
     this.setHealth(health);
     this.setArmor(armor);
     this.setAttack(attack);
-    damageHandler = new DamageHandler();
+    this.damageHandler = new DamageHandler();
   }
 
   /**
@@ -39,7 +39,7 @@ public class Unit {
     if (opponent == null) {
       throw new IllegalArgumentException("Opponent can not be null.");
     } else {
-      damageHandler.reduceHealth(opponent);
+      this.damageHandler.reduceHealth(opponent);
     }
   }
 
